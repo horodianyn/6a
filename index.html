@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6-А · Требухівський ліцей — розклади та правила</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1b2733; --muted:#5b6b7b;
+    --line:#e2e8f0; --accent:#2563eb; --accent-soft:#e8f0fe;
+    --green:#0f9d6b; --amber:#c77700; --red:#d64545; --violet:#7c3aed;
+    --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0f151c; --card:#161f29; --ink:#e6edf3; --muted:#9fb0c0;
+      --line:#26313d; --accent:#5b9bff; --accent-soft:#182233;
+      --green:#3ecf9a; --amber:#e6a23c; --red:#f47174; --violet:#a78bfa;
+      --shadow:0 1px 3px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.5;-webkit-text-size-adjust:100%}
+  .wrap{max-width:860px;margin:0 auto;padding:0 14px 60px}
+  header.top{padding:22px 4px 10px}
+  header.top h1{margin:0 0 4px;font-size:1.5rem;line-height:1.2}
+  header.top .sub{color:var(--muted);font-size:.92rem}
+  header.top .upd{display:inline-block;margin-top:8px;font-size:.78rem;color:var(--muted);
+    background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+
+  nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);
+    display:flex;gap:6px;overflow-x:auto;padding:10px 2px;margin:0 -2px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav.tabs::-webkit-scrollbar{display:none}
+  nav.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);
+    color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.9rem;font-weight:600;
+    cursor:pointer;white-space:nowrap;transition:.15s}
+  nav.tabs button:hover{border-color:var(--accent)}
+  nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  section.tab{display:none;animation:fade .2s ease}
+  section.tab.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:16px 16px;margin:12px 0}
+  .card h2{margin:.1em 0 .5em;font-size:1.15rem}
+  .card h3{margin:1em 0 .4em;font-size:1rem}
+  .card p{margin:.4em 0}
+  .lead{color:var(--muted);font-size:.95rem;margin-top:2px}
+
+  .pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);background:transparent;vertical-align:middle}
+  .pill.new{color:#fff;background:var(--green);border-color:var(--green)}
+  .pill.old{color:var(--muted)}
+  .pill.i{color:#fff;background:var(--accent);border-color:var(--accent)}
+  .pill.ii{color:#fff;background:var(--violet);border-color:var(--violet)}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.3em 0}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:var(--accent-soft);font-weight:700;font-size:.82rem}
+  tbody tr:nth-child(even){background:rgba(127,127,127,.04)}
+  td.time,th.time{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .hl{background:var(--accent-soft) !important}
+
+  ul.clean{margin:.4em 0;padding-left:1.15em}
+  ul.clean li{margin:.28em 0}
+  .check li{list-style:none;position:relative;padding-left:1.7em;margin:.4em 0}
+  .check{padding-left:0}
+  .check li::before{content:"☐";position:absolute;left:0;top:-1px;font-size:1.05em;color:var(--accent)}
+
+  .rule{border-left:4px solid var(--line);padding:2px 0 2px 12px;margin:14px 0}
+  .rule.alarm{border-color:var(--red)} .rule.food{border-color:var(--green)}
+  .rule.bus{border-color:var(--amber)} .rule.mode{border-color:var(--accent)}
+  .rule.app{border-color:var(--violet)} .rule.chat{border-color:var(--accent)}
+  .rule.pickup{border-color:var(--red)} .rule.safety{border-color:var(--amber)}
+  .rule.bully{border-color:var(--violet)} .rule.parents{border-color:var(--green)}
+  .rule h3{margin:.1em 0 .3em;font-size:1rem}
+  .rule .ico{margin-right:.35em}
+
+  .keybox{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+  .keybox h2{margin-top:0}
+  .keybox ul{margin:.3em 0}
+
+  details{border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin:10px 0;background:var(--card)}
+  details summary{cursor:pointer;font-weight:600;padding:6px 0}
+  .note{font-size:.82rem;color:var(--muted)}
+  .badge-day{display:inline-block;min-width:2.1em;text-align:center;font-weight:700;border-radius:8px;padding:2px 6px;font-size:.8rem}
+  .b-oc{background:var(--accent);color:#fff}
+  .b-di{background:transparent;color:var(--violet);border:1px solid var(--violet)}
+
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+  .toolbar button{border:1px solid var(--line);background:var(--card);color:var(--ink);
+    border-radius:10px;padding:7px 12px;font-size:.85rem;cursor:pointer}
+  footer{margin-top:26px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.6}
+  .placeholder{text-align:center;color:var(--muted);padding:34px 10px}
+  .placeholder .big{font-size:2.4rem;margin-bottom:6px}
+  @media print{
+    nav.tabs{display:none} section.tab{display:block !important}
+    .toolbar{display:none} body{background:#fff}
+    .card{break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>6-А клас · Требухівський ліцей</h1>
+    <div class="sub">Розклади та правила навчання у змішаному форматі</div>
+    <div class="upd">Оновлено: 01.09.2026</div>
+    <div class="toolbar">
+      <button onclick="window.print()">🖨️ Друк / зберегти PDF</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="mode" class="active">🏠 Поточний режим</button>
+    <button data-tab="news">📣 Оголошення</button>
+    <button data-tab="bells">🔔 Дзвінки</button>
+    <button data-tab="lessons">📚 Уроки 6-А</button>
+    <button data-tab="buses">🚌 Автобуси</button>
+    <button data-tab="rules">📋 Правила</button>
+    <button data-tab="books">📖 Підручники</button>
+  </nav>
+
+  <!-- ============ ПОТОЧНИЙ РЕЖИМ ============ -->
+  <section class="tab active" id="mode">
+    <div class="keybox card">
+      <h2>Головне коротко</h2>
+      <ul class="clean">
+        <li><b>Змішаний формат</b> на перший місяць: через день чергуємо <b>очно ↔ дистанційно</b>.</li>
+        <li>Уроки скорочені — <b>по 30 хвилин</b>.</li>
+        <li>6-А навчається в <b>I зміні</b> (початок о <b>08:30</b>).</li>
+        <li>Дистанційно — <b>Zoom</b> або <b>Google Meet</b>; відеоуроки, тести й домашні завдання дублюються у групі.</li>
+        <li>Дитина <b>щоуроку записує тему й домашнє завдання</b> (поки немає застосунку «Мрія»).</li>
+        <li>Під час <b>повітряної тривоги</b> автобус не їде, а уроки проводяться в укритті — деталі у вкладці «Правила».</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Найближчі дні для 6-А</h2>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Дата</th><th>Формат</th><th>Зміна / початок</th></tr></thead>
+        <tbody>
+          <tr><td>Вт, 02.09</td><td><span class="badge-day b-oc">Очно</span></td><td>I зміна · 08:30</td></tr>
+          <tr><td>Ср, 03.09</td><td><span class="badge-day b-di">Дистанц.</span></td><td>I зміна (онлайн)</td></tr>
+          <tr><td>Чт, 04.09</td><td><span class="badge-day b-oc">Очно</span></td><td>I зміна · 08:30</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Далі чергуємо день через день. Точний графік на наступні дні уточнюйте у групі класу.</p>
+    </div>
+
+    <div class="card">
+      <h2>Що зробити батькам</h2>
+      <ul class="check">
+        <li>Завантажити застосунок <b>«Мрія»</b> (верифікація через <b>Дію</b> або <b>Приват24 / банк</b>) — активуємо, щойно ліцей туди додадуть.</li>
+        <li>Встановити дитині <b>Zoom</b> і <b>Google Meet</b> (Chrome → встановити).</li>
+        <li>Підготувати <b>планшетку та зошити</b> для письма (зокрема в укритті — парт там немає).</li>
+        <li>Слідкувати, щоб дитина <b>записувала тему й домашнє</b> на кожному уроці.</li>
+        <li>Щодо харчування — <b>написати заяву</b> класному керівнику, якщо дитина не харчується.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ОГОЛОШЕННЯ ============ -->
+  <section class="tab" id="news">
+    <div class="card">
+      <h2>Оголошення від класного керівника</h2>
+      <p class="lead">Повідомлення у групі «6-А» після зборів (01.09).</p>
+      <ul class="check">
+        <li><b>Перейменувати нік дитини</b> у Viber-групі «6-А дистанційне навчання» на <b>Прізвище та Ім'я</b>. Присутність відмічають — інакше стоятиме «н».</li>
+        <li><b>До 8:30 відписати, кого не буде</b> в ліцеї: причина — сімейні обставини або хвороба (діагнози й деталі писати не треба). Після тривоги писати не потрібно.</li>
+        <li><b>Завтра діти йдуть у школу</b> — взяти <b>всі зошити на всі уроки за розкладом</b>.</li>
+        <li><b>Дистанційне навчання</b>: встановити <b>Zoom</b> і <b>Google Meet</b> у Chrome; проводиться онлайн за розкладом <b>I зміни</b>.</li>
+        <li><b>Медичні довідки</b> принести завтра.</li>
+      </ul>
+      <p class="note">Оновлюється в міру нових повідомлень керівника.</p>
+    </div>
+  </section>
+
+  <!-- ============ ДЗВІНКИ ============ -->
+  <section class="tab" id="bells">
+    <div class="card">
+      <h2>Розклад дзвінків <span class="pill new">Чинний зараз</span></h2>
+      <p class="lead">Змішаний формат, тривалість уроків — 30 хв.</p>
+
+      <h3>I зміна <span class="pill i">6-А тут</span> <span class="note">(1, 2, 5, 6, 7, 8 класи)</span></h3>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Урок</th><th class="time">Час</th><th class="time">Перерва після</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>1</td><td class="time">08:30 – 09:00</td><td class="time">5 хв</td></tr>
+          <tr class="hl"><td>2</td><td class="time">09:05 – 09:35</td><td class="time">5 хв</td></tr>
+          <tr class="hl"><td>3</td><td class="time">09:40 – 10:10</td><td class="time">20 хв</td></tr>
+          <tr class="hl"><td>4</td><td class="time">10:30 – 11:00</td><td class="time">5 хв</td></tr>
+          <tr class="hl"><td>5</td><td class="time">11:05 – 11:35</td><td class="time">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Харчування — після 3-го уроку. ГПД по 1 групі на паралелі 1–3 класів; харчування ГПД — 14:30.</p>
+
+      <h3>II зміна <span class="pill ii">3, 4, 9, 10, 11 класи</span></h3>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Урок</th><th class="time">Час</th><th class="time">Перерва після</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="time">12:30 – 13:00</td><td class="time">5 хв</td></tr>
+          <tr><td>2</td><td class="time">13:05 – 13:35</td><td class="time">20 хв</td></tr>
+          <tr><td>3</td><td class="time">13:55 – 14:25</td><td class="time">5 хв</td></tr>
+          <tr><td>4</td><td class="time">14:30 – 15:00</td><td class="time">5 хв</td></tr>
+          <tr><td>5</td><td class="time">15:05 – 15:35</td><td class="time">5 хв</td></tr>
+          <tr><td>6</td><td class="time">15:40 – 16:10</td><td class="time">5 хв</td></tr>
+          <tr><td>7</td><td class="time">16:15 – 16:45</td><td class="time">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Харчування — після 2-го уроку.</p>
+    </div>
+
+    <details>
+      <summary>Звичайний режим (45 хв) <span class="pill old">старий — коли повернемось</span></summary>
+      <p class="lead">Режим навчання учнів 5–11 класів (нескорочені уроки).</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Урок</th><th class="time">Час</th><th class="time">Перерва після</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="time">08:30 – 09:15</td><td class="time">10 хв</td></tr>
+          <tr><td>2</td><td class="time">09:25 – 10:10</td><td class="time">25 хв</td></tr>
+          <tr><td>3</td><td class="time">10:35 – 11:20</td><td class="time">25 хв</td></tr>
+          <tr><td>4</td><td class="time">11:45 – 12:30</td><td class="time">5 хв</td></tr>
+          <tr><td>5</td><td class="time">12:35 – 13:20</td><td class="time">5 хв</td></tr>
+          <tr><td>6</td><td class="time">13:25 – 14:20</td><td class="time">5 хв</td></tr>
+          <tr><td>7</td><td class="time">14:25 – 15:10</td><td class="time">5 хв</td></tr>
+          <tr><td>8</td><td class="time">15:15 – 16:00</td><td class="time">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ УРОКИ 6-А ============ -->
+  <section class="tab" id="lessons">
+    <div class="card">
+      <h2>Тижневий розклад уроків 6-А</h2>
+      <p class="lead">У дужках — номер кабінету. У змішаному форматі уроки тривають 30 хв (див. вкладку «Дзвінки»).</p>
+      <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>№</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Англійська мова <span class="note">(37)</span></td><td>Іспанська <span class="note">(26)</span></td><td>Математика <span class="note">(26)</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">(25)</span></td><td>Фізкультура <span class="note">(с/з)</span></td></tr>
+          <tr><td>2</td><td>ІК «Здоров'я, безпека та добробут» <span class="note">(50)</span></td><td>Математика <span class="note">(25)</span></td><td>Технології <span class="note">(49, майстерня)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Іспанська <span class="note">(47)</span></td></tr>
+          <tr><td>3</td><td>Географія <span class="note">(26)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Пізнаємо природу <span class="note">(35)</span></td><td>Інформатика <span class="note">(41 / 31)</span></td></tr>
+          <tr><td>4</td><td>Українська мова <span class="note">(30)</span></td><td>Зарубіжна література <span class="note">(27)</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">(25)</span></td><td>Українська література <span class="note">(38)</span></td><td>Англійська мова <span class="note">(37)</span></td></tr>
+          <tr><td>5</td><td>Технології <span class="note">(49, майстерня)</span></td><td>Пізнаємо природу <span class="note">(35)</span></td><td>Інформатика <span class="note">(41 / 31)</span></td><td>Англійська мова <span class="note">(37)</span></td><td>Українська література <span class="note">(39)</span></td></tr>
+          <tr><td>6</td><td>Математика <span class="note">(41)</span></td><td>Англійська мова <span class="note">(37)</span></td><td>Фізкультура <span class="note">(г/з)</span></td><td>Математика <span class="note">(41)</span></td><td>Математика <span class="note">(41)</span></td></tr>
+          <tr><td>7</td><td>—</td><td>—</td><td>Мистецтво <span class="note">(27)</span></td><td>Фізкультура <span class="note">(с/з)</span></td><td>Географія <span class="note">(35)</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ АВТОБУСИ ============ -->
+  <section class="tab" id="buses">
+    <div class="card">
+      <h2>Автобус «ЕТАЛОН» <span class="note">— розвезення</span></h2>
+      <p class="lead">Требухівський ліцей → Торгмашівська → М.Швидака → Повстанська → Вокзальна → Липнева → Ярослава Мудрого → ліцей → Героїв Азову → Володимирська → Варченкова → «Хуторок» → Будівельників → Довженка → х.Переможець → Дачі → ліцей.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Зупинка</th><th class="time">Рейс 1</th><th class="time">Рейс 2</th><th class="time">Рейс 3</th></tr></thead>
+        <tbody>
+          <tr><td>Требухівський ліцей</td><td class="time">11:40</td><td class="time">15:45</td><td class="time">17:00</td></tr>
+          <tr><td>вул. Торгмашівська</td><td class="time">11:43</td><td class="time">15:48</td><td class="time">17:03</td></tr>
+          <tr><td>вул. М. Швидака</td><td class="time">11:45</td><td class="time">15:50</td><td class="time">17:05</td></tr>
+          <tr><td>вул. Повстанська</td><td class="time">11:47</td><td class="time">15:52</td><td class="time">17:07</td></tr>
+          <tr><td>вул. Вокзальна</td><td class="time">11:49</td><td class="time">15:54</td><td class="time">17:09</td></tr>
+          <tr><td>вул. Липнева</td><td class="time">11:51</td><td class="time">15:56</td><td class="time">17:11</td></tr>
+          <tr><td>вул. Ярослава Мудрого</td><td class="time">11:53</td><td class="time">15:58</td><td class="time">17:13</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">11:58</td><td class="time">16:03</td><td class="time">17:18</td></tr>
+          <tr><td>вул. Героїв Азову</td><td class="time">12:04</td><td class="time">16:09</td><td class="time">17:24</td></tr>
+          <tr><td>вул. Володимирська</td><td class="time">12:06</td><td class="time">16:11</td><td class="time">17:26</td></tr>
+          <tr><td>вул. Варченкова</td><td class="time">12:08</td><td class="time">16:13</td><td class="time">17:28</td></tr>
+          <tr><td>маг. «Хуторок»</td><td class="time">12:10</td><td class="time">16:15</td><td class="time">17:30</td></tr>
+          <tr><td>вул. Будівельників</td><td class="time">12:11</td><td class="time">16:16</td><td class="time">17:31</td></tr>
+          <tr><td>вул. Довженка</td><td class="time">12:12</td><td class="time">16:17</td><td class="time">17:32</td></tr>
+          <tr><td>х. Переможець</td><td class="time">12:14</td><td class="time">16:19</td><td class="time">17:34</td></tr>
+          <tr><td>Дачі</td><td class="time">12:19</td><td class="time">16:24</td><td class="time">17:39</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">12:27</td><td class="time">16:32</td><td class="time">17:47</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Автобус «МЕРСЕДЕС» <span class="note">— розвезення</span></h2>
+      <p class="lead">Требухівський ліцей → Чорних Запорожців → Крайова → Садова (трансформатор) → Дьогтярина → Садова (дитяча площадка) → ліцей → Бориспільська (Грушка) → пров. Бориспільський → Сонячне сяйво → Сомова → «Жовтень» → ліцей.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Зупинка</th><th class="time">Рейс 1</th><th class="time">Рейс 2</th><th class="time">Рейс 3</th></tr></thead>
+        <tbody>
+          <tr><td>Требухівський ліцей</td><td class="time">11:45</td><td class="time">15:45</td><td class="time">17:00</td></tr>
+          <tr><td>вул. Чорних Запорожців</td><td class="time">11:50</td><td class="time">15:50</td><td class="time">17:05</td></tr>
+          <tr><td>вул. Крайова – Шевченка (перехрестя)</td><td class="time">11:52</td><td class="time">15:52</td><td class="time">17:07</td></tr>
+          <tr><td>вул. Садова (трансформатор)</td><td class="time">11:55</td><td class="time">15:55</td><td class="time">17:10</td></tr>
+          <tr><td>вул. Садова – Дьогтярина (перехр.)</td><td class="time">11:57</td><td class="time">15:57</td><td class="time">17:12</td></tr>
+          <tr><td>вул. Садова (дитяча площадка)</td><td class="time">11:59</td><td class="time">15:59</td><td class="time">17:14</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">12:09</td><td class="time">16:09</td><td class="time">17:24</td></tr>
+          <tr><td>вул. Бориспільська (маг. Грушка)</td><td class="time">12:12</td><td class="time">16:12</td><td class="time">17:27</td></tr>
+          <tr><td>пров. Бориспільський</td><td class="time">12:14</td><td class="time">16:14</td><td class="time">17:29</td></tr>
+          <tr><td>пров. Бориспільський 1 (Сонячне сяйво)</td><td class="time">12:16</td><td class="time">16:16</td><td class="time">17:31</td></tr>
+          <tr><td>вул. Сомова</td><td class="time">12:18</td><td class="time">16:18</td><td class="time">17:33</td></tr>
+          <tr><td>маг. «Жовтень»</td><td class="time">12:20</td><td class="time">16:20</td><td class="time">17:35</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">12:27</td><td class="time">16:27</td><td class="time">17:42</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Дітей у автобус не перераховують пофамільно: дитина на зупинці — сідає в автобус; дорослих не пускають.</p>
+    </div>
+  </section>
+
+  <!-- ============ ПРАВИЛА ============ -->
+  <section class="tab" id="rules">
+    <div class="card">
+      <h2>Правила, озвучені класним керівником</h2>
+      <p class="lead">Стислий конспект зборів за категоріями.</p>
+
+      <div class="rule alarm">
+        <h3><span class="ico">🚨</span>Повітряна тривога</h3>
+        <ul class="clean">
+          <li>Автобус <b>не виїжджає</b>; якщо тривога під час дня — розвезення не буде.</li>
+          <li>Уроки проводяться <b>в укритті за розкладом</b> до завершення навчального дня.</li>
+          <li>Під час тривоги <b>зв'язок глушиться</b> — до школи не додзвонитися й не написати. Питання про забір дитини вирішуються особисто.</li>
+          <li>Якщо вранці тривога — дитину можна не везти; орієнтир для рішення ~7:30.</li>
+        </ul>
+      </div>
+
+      <div class="rule pickup">
+        <h3><span class="ico">🧒</span>Забір дитини з уроків</h3>
+        <ul class="clean">
+          <li>Відпускають <b>за вимогою батьків</b>, особисто (як і було).</li>
+          <li>Окремі письмові дозволи (бабуся/сусід можуть забрати) цьогоріч <b>окремо не збирають</b> — працює усна згода/домовленість.</li>
+          <li>Класний керівник за потреби відвезе дитину додому й попередньо зателефонує.</li>
+        </ul>
+      </div>
+
+      <div class="rule mode">
+        <h3><span class="ico">🏫</span>Форма навчання</h3>
+        <ul class="clean">
+          <li>Змішаний формат: <b>очно/дистанційно через день</b>, уроки по 30 хв (перший місяць, далі можливі зміни).</li>
+          <li>Дистанційно — <b>Zoom / Google Meet</b>; відеоуроки та завдання дублюються у групі класу.</li>
+          <li>Якщо дитина на очному — харчування в ліцеї; на дистанційному — вдома.</li>
+        </ul>
+      </div>
+
+      <div class="rule food">
+        <h3><span class="ico">🍽️</span>Харчування</h3>
+        <ul class="clean">
+          <li>Хто <b>не харчується</b> — написати заяву класному керівнику (в особисті), щоб не витрачати бюджетні кошти даремно.</li>
+          <li>Харчування — після 3-го уроку (I зміна).</li>
+          <li>Меню на цей місяць — <b>без вибору</b>, єдине для всіх.</li>
+        </ul>
+      </div>
+
+      <div class="rule bus">
+        <h3><span class="ico">🚌</span>Підвіз</h3>
+        <ul class="clean">
+          <li>Діти сідають за зупинками; <b>пофамільно не перераховують</b> — дитина стоїть → сідає.</li>
+          <li>Дорослих у шкільний автобус не пускають.</li>
+          <li>Розклад автобусів — у вкладці «Автобуси».</li>
+        </ul>
+      </div>
+
+      <div class="rule app">
+        <h3><span class="ico">📱</span>«Мрія» та застосунки</h3>
+        <ul class="clean">
+          <li>Переходимо на <b>«Мрію»</b>; поки ліцей туди не додано — фіксуємо теми й домашні вручну.</li>
+          <li>Верифікація — через <b>Дію / Приват24 / банк</b> (де є ключ).</li>
+          <li>Встановити дитині <b>Zoom</b> і <b>Google Meet</b>.</li>
+        </ul>
+      </div>
+
+      <div class="rule chat">
+        <h3><span class="ico">💬</span>Група / чат класу</h3>
+        <ul class="clean">
+          <li>Лише навчальна інформація: <b>нічого зайвого</b>, без стікерів і флуду.</li>
+          <li>Вчитель до кінця свого уроку скидає повідомлення й домашнє завдання.</li>
+          <li>Питання — дзвінком або особисто.</li>
+        </ul>
+      </div>
+
+      <div class="rule safety">
+        <h3><span class="ico">🚴</span>Безпека</h3>
+        <ul class="clean">
+          <li>Інструктаж: правила користування <b>велосипедами, мопедами, самокатами</b>.</li>
+          <li>На пішохідному переході транспорт <b>ведемо в руках</b>.</li>
+        </ul>
+      </div>
+
+      <div class="rule bully">
+        <h3><span class="ico">⚖️</span>Булінг</h3>
+        <ul class="clean">
+          <li>Факт булінгу визначають <b>лише відповідні органи</b> (поліція/комісія), а не за словами.</li>
+          <li>Образа дитини → пишеться <b>заява</b>; формується комісія, документи передають у поліцію.</li>
+          <li>Дві заяви складаються разом → <b>штраф батькам</b> за протоколом.</li>
+          <li>Якщо діти <b>одразу помирилися</b> — заява не формується.</li>
+        </ul>
+      </div>
+
+      <div class="rule parents">
+        <h3><span class="ico">👪</span>Батьківський комітет</h3>
+        <ul class="clean">
+          <li>Чинний склад <b>залишається</b>, якщо ніхто не проти й ніхто не бажає висуватися.</li>
+          <li>Рішення потрібно підтвердити (лишається/змінюється) — відписати класному керівнику.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПІДРУЧНИКИ ============ -->
+  <section class="tab" id="books">
+    <div class="card">
+      <div class="placeholder">
+        <div class="big">📖</div>
+        <h2>Підручники</h2>
+        <p>Розділ у роботі. Тут будуть посилання на електронні підручники та інструкція, як їх знайти й завантажити.</p>
+        <p class="note">Додамо, щойно надійде інформація.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Неофіційний конспект для зручності батьків 6-А, складений за батьківськими зборами (01.09.2026) та наданими розкладами.<br>
+    За офіційною й актуальною інформацією орієнтуйтеся на класного керівника та ліцей. Розклади на перший місяць можуть змінюватися.
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var tabs = document.getElementById('tabs');
+    var buttons = tabs.querySelectorAll('button');
+    var sections = document.querySelectorAll('section.tab');
+    function show(id){
+      buttons.forEach(function(b){ b.classList.toggle('active', b.dataset.tab===id); });
+      sections.forEach(function(s){ s.classList.toggle('active', s.id===id); });
+      try{ localStorage.setItem('school6a_tab', id); }catch(e){}
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    tabs.addEventListener('click', function(e){
+      var btn = e.target.closest('button'); if(!btn) return;
+      show(btn.dataset.tab);
+    });
+    var saved=null;
+    try{ saved = localStorage.getItem('school6a_tab'); }catch(e){}
+    if(saved && document.getElementById(saved)) show(saved);
+  })();
+</script>
+</body>
+</html>
