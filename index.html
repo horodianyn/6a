@@ -154,9 +154,20 @@
     html,body{background:#fff !important}
     *{color:#111 !important;box-shadow:none !important;text-shadow:none !important}
     .wrap{max-width:none;padding:0}
-    .hero{background:#fff !important;border:1px solid #bbb !important}
-    .card,.keybox,details{background:#fff !important;border:1px solid #ccc !important;break-inside:avoid}
+    /* компактна шапка на папері — без банера/іконки/чіпа */
+    .hero{display:block !important;background:#fff !important;border:0 !important;padding:0 !important;margin:0 0 8px !important}
+    .hero .badge,.hero .chip{display:none !important}
+    .hero h1{font-size:15pt}
+    .hero p{font-size:9pt;color:#333 !important}
+    /* картки можуть текти; не рвемо лише рядки й правила */
+    .card,.keybox,details{background:#fff !important;border:1px solid #ccc !important;margin:8px 0 !important;padding:10px !important;break-inside:auto}
+    tr,.rule{break-inside:avoid}
+    /* таблиці стискаємо під ширину аркуша */
+    .scroll{overflow:visible !important}
+    table{font-size:8.5pt}
+    th,td{padding:4px 5px !important;word-break:break-word}
     th{background:#eee !important}
+    #lessons-table{table-layout:fixed;width:100%}
     .pill,.badge-day,.chip{background:#fff !important;border:1px solid #999 !important;color:#111 !important}
     #lessons-table .t-norm{display:none !important}
     #lessons-table.mode-norm .t-cur{display:none !important}
