@@ -329,12 +329,16 @@
   <section class="tab" id="lessons">
     <div class="card">
       <h2>Тижневий розклад уроків 6-А</h2>
-      <p class="lead">Оберіть режим — колонка «Час» підлаштується. «каб.» — номер кабінету; «майстерня» — кабінет технологій; «спортзал» — урок фізкультури.</p>
+      <p class="lead">У дужках — кабінет: «каб.» — номер, «майстерня» — кабінет технологій, «спортзал» — фізкультура.</p>
 
-      <div class="segmented" id="lessons-mode">
-        <button data-lmode="cur" class="active">Поточний · 30 хв</button>
-        <button data-lmode="norm">Звичайний · 45 хв</button>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px">
+        <span style="font-weight:700">Час уроків:</span>
+        <div class="segmented" id="lessons-mode">
+          <button data-lmode="cur" class="active">Поточний · 30 хв</button>
+          <button data-lmode="norm">Звичайний · 45 хв</button>
+        </div>
       </div>
+      <p class="note">👆 Натисніть, щоб перемкнути час у колонці «Час». Зараз діють <b>скорочені 30-хв</b> уроки (I зміна). «Звичайний · 45 хв» — розклад часу, коли повернемось до звичайного режиму.</p>
 
       <div class="scroll">
       <table id="lessons-table" class="mode-cur">
