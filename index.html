@@ -123,6 +123,8 @@
   #lessons-table .t-norm{display:none}
   #lessons-table.mode-norm .t-cur{display:none}
   #lessons-table.mode-norm .t-norm{display:inline}
+  /* у поточному 30-хв режимі уроки 6–7 не діють — приглушуємо */
+  #lessons-table.mode-cur tr.only-norm{opacity:.42}
 
   a{color:var(--accent);text-decoration:none;font-weight:600}
   a:hover{text-decoration:underline}
@@ -151,6 +153,8 @@
     .segmented{width:100%}
     .segmented button{flex:1;text-align:center}
     .btn{width:100%;text-align:center}
+    /* більші зручні кнопки книжок на дотик */
+    .book-open{padding:9px 14px;margin:3px 6px 3px 0;display:inline-block}
   }
 
   /* ---------- PRINT: only active tab, on paper ---------- */
@@ -376,12 +380,12 @@
             <td class="tcol"><span class="t-cur">11:05–11:35</span><span class="t-norm">12:35–13:20</span></td>
             <td>Технології <span class="note">каб. 49 (майстерня)</span></td><td>Пізнаємо природу <span class="note">каб. 35</span></td><td>Інформатика <span class="note">каб. 41 / 31</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Українська література <span class="note">каб. 39</span></td>
           </tr>
-          <tr>
+          <tr class="only-norm">
             <td>6</td>
             <td class="tcol"><span class="t-cur">—</span><span class="t-norm">13:25–14:20</span></td>
             <td>Математика <span class="note">каб. 41</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Математика <span class="note">каб. 41</span></td><td>Математика <span class="note">каб. 41</span></td>
           </tr>
-          <tr>
+          <tr class="only-norm">
             <td>7</td>
             <td class="tcol"><span class="t-cur">—</span><span class="t-norm">14:25–15:10</span></td>
             <td>—</td><td>—</td><td>Мистецтво <span class="note">каб. 27</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Географія <span class="note">каб. 35</span></td>
@@ -682,8 +686,11 @@
     var tabs = document.getElementById('tabs');
     var buttons = tabs.querySelectorAll('button');
     var sections = document.querySelectorAll('section.tab');
+    tabs.setAttribute('role','tablist');
+    buttons.forEach(function(b){ b.setAttribute('role','tab'); b.setAttribute('aria-selected', b.classList.contains('active')?'true':'false'); });
+    sections.forEach(function(s){ s.setAttribute('role','tabpanel'); });
     function show(id){
-      buttons.forEach(function(b){ b.classList.toggle('active', b.dataset.tab===id); });
+      buttons.forEach(function(b){ var on=b.dataset.tab===id; b.classList.toggle('active', on); b.setAttribute('aria-selected', on?'true':'false'); });
       sections.forEach(function(s){ s.classList.toggle('active', s.id===id); });
       try{ localStorage.setItem('school6a_tab', id); }catch(e){}
       window.scrollTo({top:0, behavior:'smooth'});
