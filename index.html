@@ -4,119 +4,181 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>6-А · Требухівський ліцей — розклади та правила</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f5f7fa; --card:#ffffff; --ink:#1b2733; --muted:#5b6b7b;
-    --line:#e2e8f0; --accent:#2563eb; --accent-soft:#e8f0fe;
-    --green:#0f9d6b; --amber:#c77700; --red:#d64545; --violet:#7c3aed;
-    --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
-    --radius:14px;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#0f151c; --card:#161f29; --ink:#e6edf3; --muted:#9fb0c0;
-      --line:#26313d; --accent:#5b9bff; --accent-soft:#182233;
-      --green:#3ecf9a; --amber:#e6a23c; --red:#f47174; --violet:#a78bfa;
-      --shadow:0 1px 3px rgba(0,0,0,.4);
-    }
+    --bg:#0d1017; --bg2:#0a0d13; --card:#151a23; --card2:#1a2030;
+    --ink:#e9eef6; --muted:#9aa6b8; --line:#28303f;
+    --accent:#7c9cff; --accent-2:#a68bff; --accent-soft:#1a2236;
+    --amber:#ffb454; --green:#37d39b; --red:#ff6f6f; --violet:#b795ff; --blue:#7c9cff;
+    --radius:16px;
+    --shadow:0 6px 22px rgba(0,0,0,.35);
+    --font:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-    line-height:1.5;-webkit-text-size-adjust:100%}
-  .wrap{max-width:860px;margin:0 auto;padding:0 14px 60px}
-  header.top{padding:22px 4px 10px}
-  header.top h1{margin:0 0 4px;font-size:1.5rem;line-height:1.2}
-  header.top .sub{color:var(--muted);font-size:.92rem}
-  header.top .upd{display:inline-block;margin-top:8px;font-size:.78rem;color:var(--muted);
-    background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(1100px 480px at 12% -8%, rgba(124,156,255,.16), transparent 60%),
+      radial-gradient(900px 420px at 100% 0%, rgba(166,139,255,.14), transparent 55%),
+      var(--bg);
+    color:var(--ink);font-family:var(--font);line-height:1.5;-webkit-text-size-adjust:100%;
+    background-attachment:fixed;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 14px 64px}
 
-  nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);
-    display:flex;gap:6px;overflow-x:auto;padding:10px 2px;margin:0 -2px;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none}
-  nav.tabs::-webkit-scrollbar{display:none}
-  nav.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);
-    color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.9rem;font-weight:600;
-    cursor:pointer;white-space:nowrap;transition:.15s}
-  nav.tabs button:hover{border-color:var(--accent)}
-  nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;margin:18px 0 4px;padding:20px 18px;border-radius:var(--radius);
+    background:linear-gradient(135deg,rgba(124,156,255,.20),rgba(166,139,255,.12));
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    display:flex;gap:16px;align-items:center;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;border-radius:inherit;
+    background:linear-gradient(180deg,rgba(255,255,255,.04),transparent 40%);pointer-events:none}
+  .hero .badge{flex:0 0 auto;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+    font-size:30px;background:rgba(255,255,255,.06);border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+  .hero h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .hero p{margin:3px 0 0;color:var(--muted);font-size:.92rem}
+  .chip{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:.76rem;font-weight:700;
+    color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
 
-  section.tab{display:none;animation:fade .2s ease}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
+  .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;
+    padding:8px 13px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+  .btn:hover{border-color:var(--accent);color:#fff}
+
+  /* ---------- TABS (wrap, no scroll) ---------- */
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+  nav.tabs button{flex:0 1 auto;display:inline-flex;align-items:center;gap:6px;
+    border:1px solid var(--line);background:var(--card);color:var(--ink);
+    border-radius:999px;padding:9px 15px;font-size:.9rem;font-weight:700;cursor:pointer;
+    font-family:inherit;transition:.15s;white-space:nowrap}
+  nav.tabs button:hover{border-color:var(--accent);transform:translateY(-1px)}
+  nav.tabs button.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    border-color:transparent;color:#0b1020;box-shadow:0 6px 16px rgba(124,156,255,.35)}
+
+  section.tab{display:none;animation:fade .22s ease}
   section.tab.active{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
+  /* ---------- CARDS ---------- */
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:16px 16px;margin:12px 0}
-  .card h2{margin:.1em 0 .5em;font-size:1.15rem}
-  .card h3{margin:1em 0 .4em;font-size:1rem}
+    box-shadow:var(--shadow);padding:18px;margin:14px 0}
+  .card h2{margin:.1em 0 .55em;font-size:1.18rem;font-weight:800;letter-spacing:-.01em}
+  .card h3{margin:1em 0 .4em;font-size:1.02rem;font-weight:700}
   .card p{margin:.4em 0}
-  .lead{color:var(--muted);font-size:.95rem;margin-top:2px}
+  .lead{color:var(--muted);font-size:.94rem;margin-top:2px}
 
-  .pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px;
-    border:1px solid var(--line);color:var(--muted);background:transparent;vertical-align:middle}
-  .pill.new{color:#fff;background:var(--green);border-color:var(--green)}
+  .keybox{background:linear-gradient(135deg,var(--accent-soft),var(--card));
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:14px 0}
+  .keybox h2{margin-top:0;display:flex;align-items:center;gap:8px}
+
+  .pill{display:inline-block;font-size:.72rem;font-weight:800;padding:2px 9px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);vertical-align:middle}
+  .pill.new{color:#08120c;background:var(--green);border-color:transparent}
+  .pill.i{color:#0b1020;background:var(--blue);border-color:transparent}
+  .pill.ii{color:#0b1020;background:var(--violet);border-color:transparent}
   .pill.old{color:var(--muted)}
-  .pill.i{color:#fff;background:var(--accent);border-color:var(--accent)}
-  .pill.ii{color:#fff;background:var(--violet);border-color:var(--violet)}
 
   table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.3em 0}
-  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-  th{background:var(--accent-soft);font-weight:700;font-size:.82rem}
-  tbody tr:nth-child(even){background:rgba(127,127,127,.04)}
-  td.time,th.time{white-space:nowrap;font-variant-numeric:tabular-nums}
-  .hl{background:var(--accent-soft) !important}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--accent-soft);font-weight:800;font-size:.8rem;letter-spacing:.01em}
+  tbody tr:nth-child(even){background:rgba(255,255,255,.025)}
+  td.time,th.time,td.tcol,th.tcol{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .hl{background:rgba(124,156,255,.10) !important}
 
   ul.clean{margin:.4em 0;padding-left:1.15em}
-  ul.clean li{margin:.28em 0}
-  .check li{list-style:none;position:relative;padding-left:1.7em;margin:.4em 0}
+  ul.clean li{margin:.3em 0}
   .check{padding-left:0}
-  .check li::before{content:"☐";position:absolute;left:0;top:-1px;font-size:1.05em;color:var(--accent)}
+  .check li{list-style:none;position:relative;padding-left:1.8em;margin:.5em 0}
+  .check li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:5px;
+    border:2px solid var(--accent);opacity:.85}
 
-  .rule{border-left:4px solid var(--line);padding:2px 0 2px 12px;margin:14px 0}
+  .rule{border-left:4px solid var(--line);padding:2px 0 2px 13px;margin:16px 0}
   .rule.alarm{border-color:var(--red)} .rule.food{border-color:var(--green)}
-  .rule.bus{border-color:var(--amber)} .rule.mode{border-color:var(--accent)}
-  .rule.app{border-color:var(--violet)} .rule.chat{border-color:var(--accent)}
+  .rule.bus{border-color:var(--amber)} .rule.mode{border-color:var(--blue)}
+  .rule.app{border-color:var(--violet)} .rule.chat{border-color:var(--blue)}
   .rule.pickup{border-color:var(--red)} .rule.safety{border-color:var(--amber)}
   .rule.bully{border-color:var(--violet)} .rule.parents{border-color:var(--green)}
-  .rule h3{margin:.1em 0 .3em;font-size:1rem}
-  .rule .ico{margin-right:.35em}
+  .rule h3{margin:.1em 0 .3em;font-size:1.02rem;display:flex;align-items:center;gap:.4em}
 
-  .keybox{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
-  .keybox h2{margin-top:0}
-  .keybox ul{margin:.3em 0}
-
-  details{border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin:10px 0;background:var(--card)}
-  details summary{cursor:pointer;font-weight:600;padding:6px 0}
+  details{border:1px solid var(--line);border-radius:12px;padding:4px 14px;margin:12px 0;background:var(--card2)}
+  details summary{cursor:pointer;font-weight:700;padding:9px 0}
   .note{font-size:.82rem;color:var(--muted)}
-  .badge-day{display:inline-block;min-width:2.1em;text-align:center;font-weight:700;border-radius:8px;padding:2px 6px;font-size:.8rem}
-  .b-oc{background:var(--accent);color:#fff}
+
+  /* segmented toggle */
+  .segmented{display:inline-flex;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;margin:2px 0 12px}
+  .segmented button{border:0;background:transparent;color:var(--muted);font-family:inherit;font-weight:700;
+    font-size:.85rem;padding:7px 13px;border-radius:9px;cursor:pointer;transition:.15s}
+  .segmented button.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b1020}
+
+  .badge-day{display:inline-block;min-width:2.2em;text-align:center;font-weight:800;border-radius:8px;padding:3px 8px;font-size:.78rem}
+  .b-oc{background:var(--blue);color:#0b1020}
   .b-di{background:transparent;color:var(--violet);border:1px solid var(--violet)}
 
-  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
-  .toolbar button{border:1px solid var(--line);background:var(--card);color:var(--ink);
-    border-radius:10px;padding:7px 12px;font-size:.85rem;cursor:pointer}
-  footer{margin-top:26px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.6}
-  .placeholder{text-align:center;color:var(--muted);padding:34px 10px}
-  .placeholder .big{font-size:2.4rem;margin-bottom:6px}
+  /* lessons time modes */
+  #lessons-table .t-norm{display:none}
+  #lessons-table.mode-norm .t-cur{display:none}
+  #lessons-table.mode-norm .t-norm{display:inline}
+
+  footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.65}
+  .placeholder{text-align:center;color:var(--muted);padding:38px 12px}
+  .placeholder .big{font-size:2.6rem;margin-bottom:8px}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:520px){
+    .wrap{padding:0 11px 52px}
+    .hero{padding:16px 14px;gap:13px;margin-top:12px}
+    .hero .badge{width:48px;height:48px;font-size:25px;border-radius:13px}
+    .hero h1{font-size:1.22rem}
+    .hero p{font-size:.86rem}
+    nav.tabs{gap:7px}
+    nav.tabs button{padding:8px 12px;font-size:.86rem}
+    .card,.keybox{padding:15px 14px;border-radius:14px}
+    .card h2{font-size:1.08rem}
+    table{font-size:.86rem}
+    th,td{padding:7px 8px}
+    .segmented{width:100%}
+    .segmented button{flex:1;text-align:center}
+    .btn{width:100%;text-align:center}
+  }
+
+  /* ---------- PRINT: only active tab, on paper ---------- */
   @media print{
-    nav.tabs{display:none} section.tab{display:block !important}
-    .toolbar{display:none} body{background:#fff}
-    .card{break-inside:avoid;box-shadow:none}
+    nav.tabs,.toolbar,.segmented{display:none !important}
+    .tab:not(.active){display:none !important}
+    .tab.active{display:block !important}
+    html,body{background:#fff !important}
+    *{color:#111 !important;box-shadow:none !important;text-shadow:none !important}
+    .wrap{max-width:none;padding:0}
+    .hero{background:#fff !important;border:1px solid #bbb !important}
+    .card,.keybox,details{background:#fff !important;border:1px solid #ccc !important;break-inside:avoid}
+    th{background:#eee !important}
+    .pill,.badge-day,.chip{background:#fff !important;border:1px solid #999 !important;color:#111 !important}
+    #lessons-table .t-norm{display:none !important}
+    #lessons-table.mode-norm .t-cur{display:none !important}
+    #lessons-table.mode-norm .t-norm{display:inline !important}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="top">
-    <h1>6-А клас · Требухівський ліцей</h1>
-    <div class="sub">Розклади та правила навчання у змішаному форматі</div>
-    <div class="upd">Оновлено: 01.09.2026</div>
-    <div class="toolbar">
-      <button onclick="window.print()">🖨️ Друк / зберегти PDF</button>
+  <header class="hero">
+    <div class="badge">🎒</div>
+    <div>
+      <h1>6-А клас · Требухівський ліцей</h1>
+      <p>Розклади, правила й оголошення у змішаному форматі</p>
+      <span class="chip"><span class="dot"></span>Оновлено 01.09.2026</span>
     </div>
   </header>
+
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ Друк активної вкладки</button>
+  </div>
 
   <nav class="tabs" id="tabs">
     <button data-tab="mode" class="active">🏠 Поточний режим</button>
@@ -124,21 +186,21 @@
     <button data-tab="bells">🔔 Дзвінки</button>
     <button data-tab="lessons">📚 Уроки 6-А</button>
     <button data-tab="buses">🚌 Автобуси</button>
-    <button data-tab="rules">📋 Правила</button>
+    <button data-tab="meeting">📋 Зі зборів</button>
     <button data-tab="books">📖 Підручники</button>
   </nav>
 
   <!-- ============ ПОТОЧНИЙ РЕЖИМ ============ -->
   <section class="tab active" id="mode">
-    <div class="keybox card">
-      <h2>Головне коротко</h2>
+    <div class="keybox">
+      <h2>✨ Головне коротко</h2>
       <ul class="clean">
         <li><b>Змішаний формат</b> на перший місяць: через день чергуємо <b>очно ↔ дистанційно</b>.</li>
         <li>Уроки скорочені — <b>по 30 хвилин</b>.</li>
         <li>6-А навчається в <b>I зміні</b> (початок о <b>08:30</b>).</li>
         <li>Дистанційно — <b>Zoom</b> або <b>Google Meet</b>; відеоуроки, тести й домашні завдання дублюються у групі.</li>
         <li>Дитина <b>щоуроку записує тему й домашнє завдання</b> (поки немає застосунку «Мрія»).</li>
-        <li>Під час <b>повітряної тривоги</b> автобус не їде, а уроки проводяться в укритті — деталі у вкладці «Правила».</li>
+        <li>Під час <b>повітряної тривоги</b> автобус не їде, а уроки проводяться в укритті — деталі у вкладці «Зі зборів».</li>
       </ul>
     </div>
 
@@ -172,7 +234,7 @@
   <!-- ============ ОГОЛОШЕННЯ ============ -->
   <section class="tab" id="news">
     <div class="card">
-      <h2>Оголошення від класного керівника</h2>
+      <h2>📣 Оголошення від класного керівника</h2>
       <p class="lead">Повідомлення у групі «6-А» після зборів (01.09).</p>
       <ul class="check">
         <li><b>Перейменувати нік дитини</b> у Viber-групі «6-А дистанційне навчання» на <b>Прізвище та Ім'я</b>. Присутність відмічають — інакше стоятиме «н».</li>
@@ -225,7 +287,7 @@
     </div>
 
     <details>
-      <summary>Звичайний режим (45 хв) <span class="pill old">старий — коли повернемось</span></summary>
+      <summary>Звичайний режим (45 хв) <span class="pill old">коли повернемось</span></summary>
       <p class="lead">Режим навчання учнів 5–11 класів (нескорочені уроки).</p>
       <div class="scroll">
       <table>
@@ -249,30 +311,65 @@
   <section class="tab" id="lessons">
     <div class="card">
       <h2>Тижневий розклад уроків 6-А</h2>
-      <p class="lead">У дужках — номер кабінету. У змішаному форматі уроки тривають 30 хв (див. вкладку «Дзвінки»).</p>
+      <p class="lead">Оберіть режим — колонка «Час» підлаштується. «каб.» — номер кабінету; «майстерня» — кабінет технологій; «спортзал» — урок фізкультури.</p>
+
+      <div class="segmented" id="lessons-mode">
+        <button data-lmode="cur" class="active">Поточний · 30 хв</button>
+        <button data-lmode="norm">Звичайний · 45 хв</button>
+      </div>
+
       <div class="scroll">
-      <table>
+      <table id="lessons-table" class="mode-cur">
         <thead>
-          <tr><th>№</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th></tr>
+          <tr><th>№</th><th class="tcol">Час</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th></tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>Англійська мова <span class="note">(37)</span></td><td>Іспанська <span class="note">(26)</span></td><td>Математика <span class="note">(26)</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">(25)</span></td><td>Фізкультура <span class="note">(с/з)</span></td></tr>
-          <tr><td>2</td><td>ІК «Здоров'я, безпека та добробут» <span class="note">(50)</span></td><td>Математика <span class="note">(25)</span></td><td>Технології <span class="note">(49, майстерня)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Іспанська <span class="note">(47)</span></td></tr>
-          <tr><td>3</td><td>Географія <span class="note">(26)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Українська мова <span class="note">(30)</span></td><td>Пізнаємо природу <span class="note">(35)</span></td><td>Інформатика <span class="note">(41 / 31)</span></td></tr>
-          <tr><td>4</td><td>Українська мова <span class="note">(30)</span></td><td>Зарубіжна література <span class="note">(27)</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">(25)</span></td><td>Українська література <span class="note">(38)</span></td><td>Англійська мова <span class="note">(37)</span></td></tr>
-          <tr><td>5</td><td>Технології <span class="note">(49, майстерня)</span></td><td>Пізнаємо природу <span class="note">(35)</span></td><td>Інформатика <span class="note">(41 / 31)</span></td><td>Англійська мова <span class="note">(37)</span></td><td>Українська література <span class="note">(39)</span></td></tr>
-          <tr><td>6</td><td>Математика <span class="note">(41)</span></td><td>Англійська мова <span class="note">(37)</span></td><td>Фізкультура <span class="note">(г/з)</span></td><td>Математика <span class="note">(41)</span></td><td>Математика <span class="note">(41)</span></td></tr>
-          <tr><td>7</td><td>—</td><td>—</td><td>Мистецтво <span class="note">(27)</span></td><td>Фізкультура <span class="note">(с/з)</span></td><td>Географія <span class="note">(35)</span></td></tr>
+          <tr>
+            <td>1</td>
+            <td class="tcol"><span class="t-cur">08:30–09:00</span><span class="t-norm">08:30–09:15</span></td>
+            <td>Англійська мова <span class="note">каб. 37</span></td><td>Іспанська <span class="note">каб. 26</span></td><td>Математика <span class="note">каб. 26</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">каб. 25</span></td><td>Фізкультура <span class="note">спортзал</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="tcol"><span class="t-cur">09:05–09:35</span><span class="t-norm">09:25–10:10</span></td>
+            <td>ІК «Здоров'я, безпека та добробут» <span class="note">каб. 50</span></td><td>Математика <span class="note">каб. 25</span></td><td>Технології <span class="note">каб. 49 (майстерня)</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Іспанська <span class="note">каб. 47</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td class="tcol"><span class="t-cur">09:40–10:10</span><span class="t-norm">10:35–11:20</span></td>
+            <td>Географія <span class="note">каб. 26</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Пізнаємо природу <span class="note">каб. 35</span></td><td>Інформатика <span class="note">каб. 41 / 31</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="tcol"><span class="t-cur">10:30–11:00</span><span class="t-norm">11:45–12:30</span></td>
+            <td>Українська мова <span class="note">каб. 30</span></td><td>Зарубіжна література <span class="note">каб. 27</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">каб. 25</span></td><td>Українська література <span class="note">каб. 38</span></td><td>Англійська мова <span class="note">каб. 37</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td class="tcol"><span class="t-cur">11:05–11:35</span><span class="t-norm">12:35–13:20</span></td>
+            <td>Технології <span class="note">каб. 49 (майстерня)</span></td><td>Пізнаємо природу <span class="note">каб. 35</span></td><td>Інформатика <span class="note">каб. 41 / 31</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Українська література <span class="note">каб. 39</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td class="tcol"><span class="t-cur">—</span><span class="t-norm">13:25–14:20</span></td>
+            <td>Математика <span class="note">каб. 41</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Математика <span class="note">каб. 41</span></td><td>Математика <span class="note">каб. 41</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td class="tcol"><span class="t-cur">—</span><span class="t-norm">14:25–15:10</span></td>
+            <td>—</td><td>—</td><td>Мистецтво <span class="note">каб. 27</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Географія <span class="note">каб. 35</span></td>
+          </tr>
         </tbody>
       </table>
       </div>
+      <p class="note" id="lessons-hint">У поточному режимі (I зміна) — 5 уроків по 30 хв. Уроки 6–7 із сітки діють у звичайному режимі; коли який урок відбувається — уточнюйте у групі.</p>
     </div>
   </section>
 
   <!-- ============ АВТОБУСИ ============ -->
   <section class="tab" id="buses">
     <div class="card">
-      <h2>Автобус «ЕТАЛОН» <span class="note">— розвезення</span></h2>
+      <h2>🚌 Автобус «ЕТАЛОН» <span class="note">— розвезення</span></h2>
       <p class="lead">Требухівський ліцей → Торгмашівська → М.Швидака → Повстанська → Вокзальна → Липнева → Ярослава Мудрого → ліцей → Героїв Азову → Володимирська → Варченкова → «Хуторок» → Будівельників → Довженка → х.Переможець → Дачі → ліцей.</p>
       <div class="scroll">
       <table>
@@ -301,7 +398,7 @@
     </div>
 
     <div class="card">
-      <h2>Автобус «МЕРСЕДЕС» <span class="note">— розвезення</span></h2>
+      <h2>🚌 Автобус «МЕРСЕДЕС» <span class="note">— розвезення</span></h2>
       <p class="lead">Требухівський ліцей → Чорних Запорожців → Крайова → Садова (трансформатор) → Дьогтярина → Садова (дитяча площадка) → ліцей → Бориспільська (Грушка) → пров. Бориспільський → Сонячне сяйво → Сомова → «Жовтень» → ліцей.</p>
       <div class="scroll">
       <table>
@@ -327,14 +424,14 @@
     </div>
   </section>
 
-  <!-- ============ ПРАВИЛА ============ -->
-  <section class="tab" id="rules">
+  <!-- ============ ЗІ ЗБОРІВ ============ -->
+  <section class="tab" id="meeting">
     <div class="card">
-      <h2>Правила, озвучені класним керівником</h2>
-      <p class="lead">Стислий конспект зборів за категоріями.</p>
+      <h2>📋 Пам'ятка зі зборів · 01.09.2026</h2>
+      <p class="lead">Що озвучив класний керівник на батьківських зборах — за категоріями.</p>
 
       <div class="rule alarm">
-        <h3><span class="ico">🚨</span>Повітряна тривога</h3>
+        <h3><span>🚨</span>Повітряна тривога</h3>
         <ul class="clean">
           <li>Автобус <b>не виїжджає</b>; якщо тривога під час дня — розвезення не буде.</li>
           <li>Уроки проводяться <b>в укритті за розкладом</b> до завершення навчального дня.</li>
@@ -344,7 +441,7 @@
       </div>
 
       <div class="rule pickup">
-        <h3><span class="ico">🧒</span>Забір дитини з уроків</h3>
+        <h3><span>🧒</span>Забір дитини з уроків</h3>
         <ul class="clean">
           <li>Відпускають <b>за вимогою батьків</b>, особисто (як і було).</li>
           <li>Окремі письмові дозволи (бабуся/сусід можуть забрати) цьогоріч <b>окремо не збирають</b> — працює усна згода/домовленість.</li>
@@ -353,7 +450,7 @@
       </div>
 
       <div class="rule mode">
-        <h3><span class="ico">🏫</span>Форма навчання</h3>
+        <h3><span>🏫</span>Форма навчання</h3>
         <ul class="clean">
           <li>Змішаний формат: <b>очно/дистанційно через день</b>, уроки по 30 хв (перший місяць, далі можливі зміни).</li>
           <li>Дистанційно — <b>Zoom / Google Meet</b>; відеоуроки та завдання дублюються у групі класу.</li>
@@ -362,7 +459,7 @@
       </div>
 
       <div class="rule food">
-        <h3><span class="ico">🍽️</span>Харчування</h3>
+        <h3><span>🍽️</span>Харчування</h3>
         <ul class="clean">
           <li>Хто <b>не харчується</b> — написати заяву класному керівнику (в особисті), щоб не витрачати бюджетні кошти даремно.</li>
           <li>Харчування — після 3-го уроку (I зміна).</li>
@@ -371,7 +468,7 @@
       </div>
 
       <div class="rule bus">
-        <h3><span class="ico">🚌</span>Підвіз</h3>
+        <h3><span>🚌</span>Підвіз</h3>
         <ul class="clean">
           <li>Діти сідають за зупинками; <b>пофамільно не перераховують</b> — дитина стоїть → сідає.</li>
           <li>Дорослих у шкільний автобус не пускають.</li>
@@ -380,7 +477,7 @@
       </div>
 
       <div class="rule app">
-        <h3><span class="ico">📱</span>«Мрія» та застосунки</h3>
+        <h3><span>📱</span>«Мрія» та застосунки</h3>
         <ul class="clean">
           <li>Переходимо на <b>«Мрію»</b>; поки ліцей туди не додано — фіксуємо теми й домашні вручну.</li>
           <li>Верифікація — через <b>Дію / Приват24 / банк</b> (де є ключ).</li>
@@ -389,7 +486,7 @@
       </div>
 
       <div class="rule chat">
-        <h3><span class="ico">💬</span>Група / чат класу</h3>
+        <h3><span>💬</span>Група / чат класу</h3>
         <ul class="clean">
           <li>Лише навчальна інформація: <b>нічого зайвого</b>, без стікерів і флуду.</li>
           <li>Вчитель до кінця свого уроку скидає повідомлення й домашнє завдання.</li>
@@ -398,7 +495,7 @@
       </div>
 
       <div class="rule safety">
-        <h3><span class="ico">🚴</span>Безпека</h3>
+        <h3><span>🚴</span>Безпека</h3>
         <ul class="clean">
           <li>Інструктаж: правила користування <b>велосипедами, мопедами, самокатами</b>.</li>
           <li>На пішохідному переході транспорт <b>ведемо в руках</b>.</li>
@@ -406,7 +503,7 @@
       </div>
 
       <div class="rule bully">
-        <h3><span class="ico">⚖️</span>Булінг</h3>
+        <h3><span>⚖️</span>Булінг</h3>
         <ul class="clean">
           <li>Факт булінгу визначають <b>лише відповідні органи</b> (поліція/комісія), а не за словами.</li>
           <li>Образа дитини → пишеться <b>заява</b>; формується комісія, документи передають у поліцію.</li>
@@ -416,7 +513,7 @@
       </div>
 
       <div class="rule parents">
-        <h3><span class="ico">👪</span>Батьківський комітет</h3>
+        <h3><span>👪</span>Батьківський комітет</h3>
         <ul class="clean">
           <li>Чинний склад <b>залишається</b>, якщо ніхто не проти й ніхто не бажає висуватися.</li>
           <li>Рішення потрібно підтвердити (лишається/змінюється) — відписати класному керівнику.</li>
@@ -446,6 +543,7 @@
 
 <script>
   (function(){
+    // --- main tabs ---
     var tabs = document.getElementById('tabs');
     var buttons = tabs.querySelectorAll('button');
     var sections = document.querySelectorAll('section.tab');
@@ -462,6 +560,18 @@
     var saved=null;
     try{ saved = localStorage.getItem('school6a_tab'); }catch(e){}
     if(saved && document.getElementById(saved)) show(saved);
+
+    // --- lessons time mode toggle ---
+    var lm = document.getElementById('lessons-mode');
+    var table = document.getElementById('lessons-table');
+    if(lm && table){
+      lm.addEventListener('click', function(e){
+        var b = e.target.closest('button'); if(!b) return;
+        lm.querySelectorAll('button').forEach(function(x){ x.classList.toggle('active', x===b); });
+        table.classList.toggle('mode-cur', b.dataset.lmode==='cur');
+        table.classList.toggle('mode-norm', b.dataset.lmode==='norm');
+      });
+    }
   })();
 </script>
 </body>
