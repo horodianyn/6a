@@ -124,6 +124,13 @@
   #lessons-table.mode-norm .t-cur{display:none}
   #lessons-table.mode-norm .t-norm{display:inline}
 
+  a{color:var(--accent);text-decoration:none;font-weight:600}
+  a:hover{text-decoration:underline}
+  .book-open{display:inline-block;border:1px solid var(--accent);border-radius:9px;padding:5px 12px;font-size:.85rem;white-space:nowrap}
+  .book-open:hover{background:var(--accent-soft);text-decoration:none}
+  .soon{color:var(--muted);font-size:.85rem;font-weight:500}
+  .folder-link{display:flex;align-items:center;gap:10px;background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0 4px}
+  .folder-link .ic{font-size:1.4rem}
   footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.65}
   .placeholder{text-align:center;color:var(--muted);padding:38px 12px}
   .placeholder .big{font-size:2.6rem;margin-bottom:8px}
@@ -539,12 +546,38 @@
   <!-- ============ ПІДРУЧНИКИ ============ -->
   <section class="tab" id="books">
     <div class="card">
-      <div class="placeholder">
-        <div class="big">📖</div>
-        <h2>Підручники</h2>
-        <p>Розділ у роботі. Тут будуть посилання на електронні підручники та інструкція, як їх знайти й завантажити.</p>
-        <p class="note">Додамо, щойно надійде інформація.</p>
+      <h2>📖 Електронні підручники 6-А</h2>
+      <p class="lead">Натисніть «відкрити» — підручник відкриється у Google Drive (завантаження/перегляд без реєстрації).</p>
+
+      <div class="folder-link">
+        <span class="ic">📂</span>
+        <div>
+          <div><b>Спільна папка «Підручники 6-А»</b></div>
+          <span class="soon">посилання буде додано</span>
+        </div>
       </div>
+
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Предмет</th><th>Підручник</th></tr></thead>
+        <tbody>
+          <tr><td>Українська мова</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Українська література</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Зарубіжна література</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Англійська мова</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Іспанська мова</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Математика</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Географія</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Пізнаємо природу</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>ІК «Досліджуємо історію та суспільство»</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Інформатика</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Технології</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>Мистецтво</td><td><span class="soon">буде додано</span></td></tr>
+          <tr><td>ІК «Здоров'я, безпека та добробут»</td><td><span class="soon">буде додано</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Список за розкладом 6-А. Заповнюємо по мірі того, як знаходимо й додаємо підручники у Drive.</p>
     </div>
   </section>
 
