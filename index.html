@@ -43,6 +43,16 @@
   .chip{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:.76rem;font-weight:700;
     color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
   .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+  details.changelog{margin:10px 0 2px}
+  details.changelog>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;
+    font-size:.78rem;font-weight:700;color:var(--muted);
+    border:1px dashed var(--line);border-radius:999px;padding:5px 13px;user-select:none}
+  details.changelog>summary::-webkit-details-marker{display:none}
+  details.changelog>summary::after{content:"▾";font-size:.7em}
+  details.changelog[open]>summary::after{content:"▴"}
+  details.changelog>summary:hover{border-color:var(--accent);color:var(--ink)}
+  .changelog-body{margin:10px 0 4px;background:linear-gradient(135deg,var(--accent-soft),var(--card));
+    border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
 
   .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
   .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;
@@ -201,6 +211,20 @@
     </div>
   </header>
 
+  <details class="changelog">
+    <summary>🆕 Що нового на сторінці · 04.09.2026</summary>
+    <div class="changelog-body">
+      <ul class="clean">
+        <li><b>Уточнено час:</b> очне навчання I зміни — <b>5 уроків, до 11:35</b>. Уроки 6 і 7 — <b>асинхронно</b> (презентації, відео та ДЗ у групі класу), окремо в школу на них не приходять.</li>
+        <li><b>Графік форматів на тиждень 07–11.09</b> — на вкладці «Поточний режим», + фото офіційного розкладу.</li>
+        <li><b>Нова вкладка «Заяви й бланки»</b> — бланк згоди на самостійне повернення дитини додому.</li>
+        <li><b>Додано гуртки</b> (малювання, «Джура-Соколи») — деталі в «Оголошеннях».</li>
+        <li><b>Усі підручники завантажені</b> — на вкладці «Підручники».</li>
+      </ul>
+      <p class="note">Це журнал змін самої сторінки. Помітили неточність — напишіть класному керівнику або в групу класу, виправимо. 🙏</p>
+    </div>
+  </details>
+
   <div class="toolbar">
     <button class="btn" onclick="window.print()">🖨️ Друк активної вкладки</button>
   </div>
@@ -214,7 +238,6 @@
     <button data-tab="meeting">📋 Зі зборів</button>
     <button data-tab="books">📖 Підручники</button>
     <button data-tab="docs">📝 Заяви й бланки</button>
-    <button data-tab="updates">🆕 Що нового</button>
   </nav>
 
   <!-- ============ ПОТОЧНИЙ РЕЖИМ ============ -->
@@ -711,26 +734,6 @@
       </table>
       </div>
       <p class="note">Нові бланки додаватимемо сюди, щойно надійдуть від школи.</p>
-    </div>
-  </section>
-
-  <!-- ============ ОНОВЛЕННЯ САЙТУ ============ -->
-  <section class="tab" id="updates">
-    <p class="lead" style="margin:2px 0 10px">Тут — <b>зміни й доповнення на самій сторінці</b> (що додали, що виправили). Термінову шкільну інформацію дивіться в «Оголошеннях».</p>
-    <div class="keybox">
-      <h2>🆕 Що нового · 04.09.2026</h2>
-      <ul class="clean">
-        <li><b>Уточнено час:</b> очне навчання I зміни — <b>5 уроків, до 11:35</b>. Уроки 6 і 7 — <b>асинхронно</b> (презентації, відеоуроки та ДЗ у групі класу), окремо в школу на них не приходять.</li>
-        <li><b>Графік форматів на тиждень 07–11.09</b> — на вкладці «Поточний режим» (пн, ср, пт — дистанційно; вт, чт — очно) + фото офіційного розкладу.</li>
-        <li><b>Нова вкладка «Заяви й бланки»</b> — бланк згоди на самостійне повернення дитини додому.</li>
-        <li><b>Додано гуртки</b> (малювання, «Джура-Соколи») — деталі у вкладці «Оголошення».</li>
-      </ul>
-      <p class="note">Помітили неточність або щось варто додати чи змінити — напишіть класному керівнику або в групу класу, і ми розглянемо. Сторінка часто оновлюється, тож дякуємо, що допомагаєте тримати її точною. 🙏</p>
-    </div>
-
-    <div class="keybox">
-      <h2>📚 Підручники завантажені</h2>
-      <p style="margin:0">Усі підручники 6-А вже на вкладці <b>«Підручники»</b> — можна <b>відкрити онлайн</b> або <b>завантажити</b>. Іспанської мови поки немає. Користуйтеся!</p>
     </div>
   </section>
 
