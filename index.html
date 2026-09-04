@@ -88,6 +88,9 @@
   th{background:var(--accent-soft);font-weight:800;font-size:.8rem;letter-spacing:.01em}
   tbody tr:nth-child(even){background:rgba(255,255,255,.025)}
   td.time,th.time,td.tcol,th.tcol{white-space:nowrap;font-variant-numeric:tabular-nums}
+  /* Автобуси: однакова ширина колонок часу в усіх таблицях маршрутів */
+  #buses table{table-layout:fixed;width:100%}
+  #buses th.time,#buses td.time{width:130px}
   .hl{background:rgba(124,156,255,.10) !important}
 
   ul.clean{margin:.4em 0;padding-left:1.15em}
@@ -242,6 +245,14 @@
       </table>
       </div>
       <p class="note">За офіційним розкладом форматів школи. Очне навчання — до 11:35 (5 уроків); уроки 6–7 асинхронно.</p>
+    </div>
+
+    <div class="card">
+      <h2>📄 Офіційний розклад (07–11.09)</h2>
+      <p class="lead">Дзвінки та формати очно/дистанційно — фото від школи. Натисніть, щоб відкрити на весь екран.</p>
+      <a href="files/rozklad-formaty-07-11-09.jpg" target="_blank" rel="noopener">
+        <img src="files/rozklad-formaty-07-11-09.jpg" alt="Розклад дзвінків і форматів на 07–11.09.2026" style="max-width:360px;width:100%;border-radius:10px;border:1px solid var(--line);display:block">
+      </a>
     </div>
 
     <div class="card">
@@ -704,10 +715,11 @@
       <p class="lead">Форми, які треба роздрукувати, заповнити й підписати. Підписані здаємо класному керівнику.</p>
       <div class="scroll">
       <table>
-        <thead><tr><th>Документ</th><th>Завантажити</th></tr></thead>
+        <thead><tr><th>Документ</th><th class="time">Термін здати</th><th>Завантажити</th></tr></thead>
         <tbody>
           <tr>
             <td><b>Згода на самостійне повернення дитини додому</b><div class="note">Дитина сама йде додому після своєї зміни, зокрема після сигналу «Повітряна тривога». Заява на директора ліцею.</div></td>
+            <td class="time">уточнюється</td>
             <td><a class="book-open" href="files/zayava-samostiyne-povernennya.docx">⤓ Бланк (.docx)</a></td>
           </tr>
         </tbody>
