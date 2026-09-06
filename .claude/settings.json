@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|NotebookEdit|Read|Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/my projects/telegram-hub/.venv/Scripts/python.exe\" \"C:/my projects/telegram-hub/hooks/guard.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
