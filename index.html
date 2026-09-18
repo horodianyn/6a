@@ -298,10 +298,11 @@
     </div>
 
     <div class="card">
-      <h2>📄 Офіційний розклад (07–11.09)</h2>
+      <h2>📄 Офіційний розклад (07–11.09) <span class="pill old">Тиждень завершено</span></h2>
       <p class="lead">Дзвінки та формати очно/дистанційно — фото від школи. Натисніть, щоб відкрити на весь екран.</p>
+      <p class="note">⚠️ Цей тиждень завершено — розклад більше не діє. Актуальний графік — вище.</p>
       <a href="files/rozklad-formaty-07-11-09.jpg" target="_blank" rel="noopener">
-        <img src="files/rozklad-formaty-07-11-09.jpg" alt="Розклад дзвінків і форматів на 07–11.09.2026" style="max-width:360px;width:100%;border-radius:10px;border:1px solid var(--line);display:block">
+        <img src="files/rozklad-formaty-07-11-09.jpg" alt="Розклад дзвінків і форматів на 07–11.09.2026" style="max-width:360px;width:100%;border-radius:10px;border:1px solid var(--line);display:block;opacity:0.55">
       </a>
     </div>
 
@@ -343,7 +344,9 @@
     </div>
 
     <div class="card">
-      <h2>📢 Дистанційне навчання 6–11 класів <span class="pill new">11.09.2026</span></h2>
+      <h2>📢 Дистанційне навчання 6–11 класів <span class="pill old">Не актуально · 11.09.2026</span></h2>
+      <p class="note">⚠️ Не актуально з 21.09.2026 — графік змінився (дивіться «Поточний режим»). Збережено для довідки.</p>
+      <div style="text-decoration:line-through;opacity:0.55">
       <p class="lead">Повідомлення від класного керівника від 11.09.2026.</p>
       <ul class="check">
         <li><b>З наступного тижня (14.09) на два тижні</b> — 6–11 класи навчаються <b>дистанційно, у першу зміну</b>. Усі уроки проводяться за розкладом.</li>
@@ -353,6 +356,7 @@
         <li><b>1–5 класи</b> працюють <b>у школі в укритті</b>. Для вчителів це теж нові умови — просимо підтримки та розуміння.</li>
       </ul>
       <p class="note">Розклад уроків та дзвінків — на вкладці «Дзвінки».</p>
+      </div>
     </div>
 
     <div class="card">
@@ -468,11 +472,11 @@
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px">
         <span style="font-weight:700">Час уроків:</span>
         <div class="segmented" id="lessons-mode">
-          <button data-lmode="cur" class="active">Поточний · 30 хв</button>
+          <button data-lmode="cur" class="active">Поточний · 45 хв (з 21.09)</button>
           <button data-lmode="norm">Звичайний · 45 хв</button>
         </div>
       </div>
-      <p class="note">👆 Натисніть, щоб перемкнути час у колонці «Час». Зараз діють <b>скорочені 30-хв</b> уроки (I зміна). «Звичайний · 45 хв» — розклад часу, коли повернемось до звичайного режиму.</p>
+      <p class="note">👆 Натисніть, щоб перемкнути час у колонці «Час». Зараз діє режим <b>45-хв уроків з 21.09</b> (I зміна, велика перерва після 4-го). «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
 
       <div class="scroll">
       <table id="lessons-table" class="mode-cur">
@@ -482,27 +486,27 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td class="tcol"><span class="t-cur">08:30–09:00</span><span class="t-norm">08:30–09:15</span></td>
+            <td class="tcol"><span class="t-cur">08:30–09:15</span><span class="t-norm">08:30–09:15</span></td>
             <td>Англійська мова <span class="note">каб. 37</span></td><td>Іспанська <span class="note">каб. 26</span></td><td>Математика <span class="note">каб. 26</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">каб. 25</span></td><td>Фізкультура <span class="note">спортзал</span></td>
           </tr>
           <tr>
             <td>2</td>
-            <td class="tcol"><span class="t-cur">09:05–09:35</span><span class="t-norm">09:25–10:10</span></td>
+            <td class="tcol"><span class="t-cur">09:20–10:05</span><span class="t-norm">09:25–10:10</span></td>
             <td>ІК «Здоров'я, безпека та добробут» <span class="note">каб. 50</span></td><td>Математика <span class="note">каб. 25</span></td><td>Технології <span class="note">каб. 49 (майстерня)</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Іспанська <span class="note">каб. 47</span></td>
           </tr>
           <tr>
             <td>3</td>
-            <td class="tcol"><span class="t-cur">09:40–10:10</span><span class="t-norm">10:35–11:20</span></td>
+            <td class="tcol"><span class="t-cur">10:10–10:55</span><span class="t-norm">10:35–11:20</span></td>
             <td>Географія <span class="note">каб. 26</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Українська мова <span class="note">каб. 30</span></td><td>Пізнаємо природу <span class="note">каб. 35</span></td><td>Інформатика <span class="note">каб. 41 / 31</span></td>
           </tr>
           <tr>
             <td>4</td>
-            <td class="tcol"><span class="t-cur">10:30–11:00</span><span class="t-norm">11:45–12:30</span></td>
+            <td class="tcol"><span class="t-cur">11:00–11:45</span><span class="t-norm">11:45–12:30</span></td>
             <td>Українська мова <span class="note">каб. 30</span></td><td>Зарубіжна література <span class="note">каб. 27</span></td><td>ІК «Досліджуємо історію та суспільство» <span class="note">каб. 25</span></td><td>Українська література <span class="note">каб. 38</span></td><td>Англійська мова <span class="note">каб. 37</span></td>
           </tr>
           <tr>
             <td>5</td>
-            <td class="tcol"><span class="t-cur">11:05–11:35</span><span class="t-norm">12:35–13:20</span></td>
+            <td class="tcol"><span class="t-cur">12:05–12:50</span><span class="t-norm">12:35–13:20</span></td>
             <td>Технології <span class="note">каб. 49 (майстерня)</span></td><td>Пізнаємо природу <span class="note">каб. 35</span></td><td>Інформатика <span class="note">каб. 41 / 31</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Українська література <span class="note">каб. 39</span></td>
           </tr>
           <tr>
@@ -518,7 +522,7 @@
         </tbody>
       </table>
       </div>
-      <p class="note" id="lessons-hint">У поточному режимі (I зміна) очне навчання — <b>5 уроків по 30 хв, до 11:35</b>. Уроки <b>6 і 7 — асинхронно</b>: вчителі надсилають презентації, відеоуроки та ДЗ у групу класу, окремо в школу на них не приходять. «Звичайний · 45 хв» — час тих самих уроків, коли повернемось до нескороченого режиму.</p>
+      <p class="note" id="lessons-hint">У поточному режимі з 21.09 (I зміна) — <b>5 уроків по 45 хв, до 12:50</b>, велика перерва після 4-го (11:45–12:05). Уроки <b>6 і 7 — асинхронно</b> (уточнюється): вчителі надсилають презентації, відеоуроки та ДЗ у групу класу. «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
     </div>
   </section>
 
