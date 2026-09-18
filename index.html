@@ -91,6 +91,7 @@
   .pill.i{color:#0b1020;background:var(--blue);border-color:transparent}
   .pill.ii{color:#0b1020;background:var(--violet);border-color:transparent}
   .pill.old{color:var(--muted)}
+  .pill.danger{color:#2b0b0b;background:var(--red);border-color:transparent;font-weight:800}
 
   table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.3em 0}
   .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
@@ -149,6 +150,35 @@
   footer{margin-top:28px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.65}
   .placeholder{text-align:center;color:var(--muted);padding:38px 12px}
   .placeholder .big{font-size:2.6rem;margin-bottom:8px}
+
+  /* ---------- ВІДГУК (плаваюча картка) ---------- */
+  #fb{position:fixed;left:50%;bottom:14px;z-index:60;width:min(430px,calc(100vw - 20px));
+    transform:translateX(-50%) translateY(150%);opacity:0;pointer-events:none;
+    background:var(--card2);border:1px solid var(--line);border-radius:16px;
+    box-shadow:0 14px 40px rgba(0,0,0,.55);padding:14px 15px;
+    transition:transform .28s ease,opacity .28s ease}
+  #fb.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+  #fb h3{margin:0 0 3px;font-size:.98rem;font-weight:800;padding-right:26px}
+  #fb p{margin:0;font-size:.82rem;color:var(--muted)}
+  #fb .fb-x{position:absolute;top:8px;right:9px;width:28px;height:28px;border:0;border-radius:8px;
+    background:transparent;color:var(--muted);font-size:1.05rem;cursor:pointer;font-family:inherit;line-height:1}
+  #fb .fb-x:hover{background:rgba(255,255,255,.07);color:var(--ink)}
+  #fb .fb-row{display:flex;gap:8px;margin-top:11px}
+  #fb .fb-vote{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+    border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;
+    padding:9px 6px;font-family:inherit;font-size:.76rem;font-weight:700;cursor:pointer;transition:.15s}
+  #fb .fb-vote span{font-size:1.35rem;line-height:1}
+  #fb .fb-vote:hover{border-color:var(--accent);transform:translateY(-1px)}
+  #fb textarea{width:100%;margin-top:10px;background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:11px;padding:9px 10px;font-family:inherit;
+    font-size:.86rem;resize:vertical;min-height:62px}
+  #fb textarea:focus{outline:none;border-color:var(--accent)}
+  #fb .fb-actions{display:flex;gap:8px;margin-top:9px}
+  #fb .fb-actions .btn{flex:1}
+  #fb .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b1020;border-color:transparent}
+  #fb-thanks .ok{font-size:1.6rem}
+  #fb-open{margin-top:10px}
+  @media print{#fb,#fb-open{display:none !important}}
 
   /* ---------- MOBILE ---------- */
   @media (max-width:520px){
@@ -215,11 +245,13 @@
     <summary>🆕 Що нового на сторінці · 18.09.2026</summary>
     <div class="changelog-body">
       <ul class="clean">
+        <li><b>18.09:</b> <b>Нові графіки розвезення з 21.09</b> — «ЕТАЛОН» і «МЕРСЕДЕС» їдуть о <b>13:00, 15:00, 16:00</b>. Ранковий підвіз без змін. Деталі — вкладка «Автобуси».</li>
+        <li><b>18.09:</b> <b>Уроки 6 і 7 більше не асинхронні</b> — з 21.09 проводяться за розкладом (12:55–13:40 і 13:45–14:30).</li>
         <li><b>18.09:</b> <b>Графік занять 6-А на 21.09–23.10</b>: 21–25.09 — <b>очно</b> у школі; 28.09–02.10 і 05–09.10 — дистанційно; 12–16.10 — очно; 19–23.10 — дистанційно. Детальна таблиця і фото — вкладка «Поточний режим».</li>
         <li><b>18.09:</b> <b>Розклад дзвінків змінено з 21.09</b> — велика перерва (20 хв) тепер після 4-го уроку (урок 4: 11:00–11:45). Деталі — вкладка «Дзвінки».</li>
         <li><b>11.09:</b> Оголошення від класного керівника — <b>6–11 класи переходять на повністю дистанційне навчання</b> на два тижні (14–25.09.2026), I зміна. 1–5 класи — у школі в укритті.</li>
         <li><b>Розклад дзвінків</b> для 5–11 класів (дистанційне, I зміна, 45 хв, 8 уроків) — на вкладці «Дзвінки».</li>
-        <li><b>Уточнено час:</b> очне навчання I зміни — <b>5 уроків, до 11:35</b>. Уроки 6 і 7 — <b>асинхронно</b> (презентації, відео та ДЗ у групі класу), окремо в школу на них не приходять.</li>
+        <li><b>Уточнено час:</b> очне навчання I зміни — <b>5 уроків, до 11:35</b>. <span class="note">(Асинхронні уроки 6–7 діяли до 21.09 — тепер скасовано.)</span></li>
         <li><b>Графік форматів на тиждень 07–11.09</b> — на вкладці «Поточний режим», + фото офіційного розкладу.</li>
         <li><b>Нова вкладка «Заяви й бланки»</b> — бланк згоди на самостійне повернення дитини додому.</li>
         <li><b>Додано гуртки</b> (малювання, «Джура-Соколи») — деталі в «Оголошеннях».</li>
@@ -252,6 +284,8 @@
         <li>📅 <b>З 21.09 — чергування по тижнях</b>: тиждень 21–25.09 — 6-А <b>очно</b> у школі; 28.09–02.10 — <b>дистанційно</b> (І зміна, 08:30); і т.д. Повний графік до кінця чверті — нижче у цій вкладці.</li>
         <li><b>Дистанційне/онлайн-навчання — тільки перша зміна</b> для всіх класів (початок о 08:30). Приблизно 30 хв уроку — онлайн, решта — самостійна робота, відео, завдання.</li>
         <li>🔔 <b>З 21.09 — новий розклад дзвінків</b>: велика перерва (20 хв) після 4-го уроку (11:00–11:45). Деталі — вкладка «Дзвінки».</li>
+        <li>📚 <b>З 21.09 уроки 6 і 7 — за розкладом, не асинхронно</b>: 12:55–13:40 і 13:45–14:30.</li>
+        <li>🚌 <b>З 21.09 — нові графіки розвезення</b>: «ЕТАЛОН» і «МЕРСЕДЕС» о <b>13:00, 15:00, 16:00</b>. Ранковий підвіз без змін — вкладка «Автобуси».</li>
         <li>Під час <b>жовтого рівня небезпеки</b> вчителі орієнтуються на ситуацію і проводять онлайн-урок, якщо дозволяють обставини.</li>
         <li>Підключатися через <b>Zoom</b> або <b>Google Meet</b>; підписатися своїм <b>Прізвищем та Ім'ям</b>, за можливості — вмикати камеру.</li>
         <li>Дитина <b>щоуроку записує тему й домашнє завдання</b>.</li>
@@ -298,7 +332,7 @@
     </div>
 
     <div class="card">
-      <h2>📄 Офіційний розклад (07–11.09) <span class="pill old">Тиждень завершено</span></h2>
+      <h2>📄 Офіційний розклад (07–11.09) <span class="pill danger">⛔ Тиждень завершено</span></h2>
       <p class="lead">Дзвінки та формати очно/дистанційно — фото від школи. Натисніть, щоб відкрити на весь екран.</p>
       <p class="note">⚠️ Цей тиждень завершено — розклад більше не діє. Актуальний графік — вище.</p>
       <a href="files/rozklad-formaty-07-11-09.jpg" target="_blank" rel="noopener">
@@ -320,6 +354,26 @@
 
   <!-- ============ ОГОЛОШЕННЯ ============ -->
   <section class="tab" id="news">
+    <div class="card">
+      <h2>🚌 Нові графіки розвезення з 21.09 <span class="pill new">18.09.2026</span></h2>
+      <p class="lead">Зверніть увагу: з понеділка 21 вересня діють <b>нові графіки розвезення</b> дітей після уроків.</p>
+      <ul class="check">
+        <li><b>«ЕТАЛОН»</b> — рейси о <b>13:00, 15:00, 16:00</b> (було 11:40, 15:45, 17:00).</li>
+        <li><b>«МЕРСЕДЕС»</b> — рейси о <b>13:00, 15:00, 16:00</b> (було 13:00, 14:00, 17:00).</li>
+        <li><b>Ранковий підвіз до школи не змінювався</b> — час той самий.</li>
+        <li>Повні таблиці по зупинках — вкладка «Автобуси».</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📚 Уроки 6 і 7 — більше не асинхронно <span class="pill new">18.09.2026</span></h2>
+      <p class="lead">З 21.09 асинхронний режим для 6-го і 7-го уроків скасовується.</p>
+      <ul class="check">
+        <li>Уроки <b>6 і 7 проводяться за розкладом дзвінків</b>: 6-й — <b>12:55–13:40</b>, 7-й — <b>13:45–14:30</b>.</li>
+        <li>Тижневий розклад із часом — вкладка «Уроки 6-А».</li>
+      </ul>
+    </div>
+
     <div class="card">
       <h2>📅 Графік занять 6-А до кінця I чверті <span class="pill new">18.09.2026</span></h2>
       <p class="lead">Офіційний тижневий графік очного/дистанційного навчання на 21.09–23.10.2026.</p>
@@ -421,7 +475,7 @@
         </tbody>
       </table>
       </div>
-      <p class="note"><b>Очне навчання I зміни — 5 уроків, до 11:35.</b> Уроки 6 і 7 проводяться <b>асинхронно</b> (і в очні, і в дистанційні дні): вчителі надсилають презентації, відеоуроки та домашнє завдання у групу класу — окремо в школу на них не приходять.</p>
+      <p class="note"><b>Очне навчання I зміни — 5 уроків, до 11:35.</b> Уроки 6 і 7 проводилися <b>асинхронно</b> (вчителі надсилали презентації, відео та ДЗ у групу класу). <b>З 21.09 асинхронний режим скасовано</b> — уроки 6 і 7 ідуть за розкладом дзвінків (12:55–13:40 і 13:45–14:30).</p>
       <p class="note">Харчування — після 3-го уроку. ГПД по 1 групі на паралелі 1–3 класів; харчування ГПД — 14:30.</p>
 
       <h3>II зміна <span class="pill ii">3, 4, 9, 10, 11 класи</span></h3>
@@ -476,7 +530,7 @@
           <button data-lmode="norm">Звичайний · 45 хв</button>
         </div>
       </div>
-      <p class="note">👆 Натисніть, щоб перемкнути час у колонці «Час». Зараз діє режим <b>45-хв уроків з 21.09</b> (I зміна, велика перерва після 4-го). «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
+      <p class="note">👆 Натисніть, щоб перемкнути час у колонці «Час». Зараз діє режим <b>45-хв уроків з 21.09</b> (I зміна, велика перерва після 4-го, уроки 6–7 — за розкладом). «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
 
       <div class="scroll">
       <table id="lessons-table" class="mode-cur">
@@ -511,18 +565,18 @@
           </tr>
           <tr>
             <td>6</td>
-            <td class="tcol"><span class="t-cur">асинхронно</span><span class="t-norm">13:25–14:20</span></td>
+            <td class="tcol"><span class="t-cur">12:55–13:40</span><span class="t-norm">13:25–14:20</span></td>
             <td>Математика <span class="note">каб. 41</span></td><td>Англійська мова <span class="note">каб. 37</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Математика <span class="note">каб. 41</span></td><td>Математика <span class="note">каб. 41</span></td>
           </tr>
           <tr>
             <td>7</td>
-            <td class="tcol"><span class="t-cur">асинхронно</span><span class="t-norm">14:25–15:10</span></td>
+            <td class="tcol"><span class="t-cur">13:45–14:30</span><span class="t-norm">14:25–15:10</span></td>
             <td>—</td><td>—</td><td>Мистецтво <span class="note">каб. 27</span></td><td>Фізкультура <span class="note">спортзал</span></td><td>Географія <span class="note">каб. 35</span></td>
           </tr>
         </tbody>
       </table>
       </div>
-      <p class="note" id="lessons-hint">У поточному режимі з 21.09 (I зміна) — <b>5 уроків по 45 хв, до 12:50</b>, велика перерва після 4-го (11:45–12:05). Уроки <b>6 і 7 — асинхронно</b> (уточнюється): вчителі надсилають презентації, відеоуроки та ДЗ у групу класу. «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
+      <p class="note" id="lessons-hint">У поточному режимі з 21.09 (I зміна) — уроки по <b>45 хв</b> за розкладом дзвінків, велика перерва після 4-го (11:45–12:05). <b>Асинхронний режим для уроків 6 і 7 з 21.09 скасовано</b> — вони проводяться за розкладом (6-й: 12:55–13:40, 7-й: 13:45–14:30). «Звичайний · 45 хв» — звичайний шкільний розклад дзвінків.</p>
     </div>
   </section>
 
@@ -533,6 +587,7 @@
     <div class="card">
       <h2>🌅 Зранку — підвіз до школи</h2>
       <p class="lead">Час відправлення від зупинки. Чотири маршрути.</p>
+      <p class="note">Ранковий підвіз <b>не змінювався</b> — оновлення від 18.09 стосується лише розвезення після уроків (нижче).</p>
 
       <h3>Маршрут «Дитяча площадка»</h3>
       <div class="scroll">
@@ -606,55 +661,56 @@
     <h2 style="margin:22px 4px 6px;font-size:1.15rem">🏠 Після уроків — розвезення</h2>
 
     <div class="card">
-      <h2>🚌 Автобус «ЕТАЛОН» <span class="note">— розвезення</span></h2>
+      <h2>🚌 Автобус «ЕТАЛОН» <span class="note">— розвезення</span> <span class="pill new">З 21.09.2026</span></h2>
       <p class="lead">Требухівський ліцей → Торгмашівська → М.Швидака → Повстанська → Вокзальна → Липнева → Ярослава Мудрого → ліцей → Героїв Азову → Володимирська → Варченкова → «Хуторок» → Будівельників → Довженка → х.Переможець → Дачі → ліцей.</p>
+      <p class="note">Новий розклад діє <b>з 21.09.2026</b>. Час усіх трьох рейсів змінено: було 11:40 / 15:45 / 17:00 — стало <b>13:00 / 15:00 / 16:00</b>.</p>
       <div class="scroll">
       <table>
         <thead><tr><th>Зупинка</th><th class="time">Рейс 1</th><th class="time">Рейс 2</th><th class="time">Рейс 3</th></tr></thead>
         <tbody>
-          <tr><td>Требухівський ліцей</td><td class="time">11:40</td><td class="time">15:45</td><td class="time">17:00</td></tr>
-          <tr><td>вул. Торгмашівська</td><td class="time">11:43</td><td class="time">15:48</td><td class="time">17:03</td></tr>
-          <tr><td>вул. М. Швидака</td><td class="time">11:45</td><td class="time">15:50</td><td class="time">17:05</td></tr>
-          <tr><td>вул. Повстанська</td><td class="time">11:47</td><td class="time">15:52</td><td class="time">17:07</td></tr>
-          <tr><td>вул. Вокзальна</td><td class="time">11:49</td><td class="time">15:54</td><td class="time">17:09</td></tr>
-          <tr><td>вул. Липнева</td><td class="time">11:51</td><td class="time">15:56</td><td class="time">17:11</td></tr>
-          <tr><td>вул. Ярослава Мудрого</td><td class="time">11:53</td><td class="time">15:58</td><td class="time">17:13</td></tr>
-          <tr><td>Требухівський ліцей</td><td class="time">11:58</td><td class="time">16:03</td><td class="time">17:18</td></tr>
-          <tr><td>вул. Героїв Азову</td><td class="time">12:04</td><td class="time">16:09</td><td class="time">17:24</td></tr>
-          <tr><td>вул. Володимирська</td><td class="time">12:06</td><td class="time">16:11</td><td class="time">17:26</td></tr>
-          <tr><td>вул. Варченкова</td><td class="time">12:08</td><td class="time">16:13</td><td class="time">17:28</td></tr>
-          <tr><td>маг. «Хуторок»</td><td class="time">12:10</td><td class="time">16:15</td><td class="time">17:30</td></tr>
-          <tr><td>вул. Будівельників</td><td class="time">12:11</td><td class="time">16:16</td><td class="time">17:31</td></tr>
-          <tr><td>вул. Довженка</td><td class="time">12:12</td><td class="time">16:17</td><td class="time">17:32</td></tr>
-          <tr><td>х. Переможець</td><td class="time">12:14</td><td class="time">16:19</td><td class="time">17:34</td></tr>
-          <tr><td>Дачі</td><td class="time">12:19</td><td class="time">16:24</td><td class="time">17:39</td></tr>
-          <tr><td>Требухівський ліцей</td><td class="time">12:27</td><td class="time">16:32</td><td class="time">17:47</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:00</td><td class="time">15:00</td><td class="time">16:00</td></tr>
+          <tr><td>вул. Торгмашівська</td><td class="time">13:03</td><td class="time">15:03</td><td class="time">16:03</td></tr>
+          <tr><td>вул. М. Швидака</td><td class="time">13:05</td><td class="time">15:05</td><td class="time">16:05</td></tr>
+          <tr><td>вул. Повстанська</td><td class="time">13:07</td><td class="time">15:07</td><td class="time">16:07</td></tr>
+          <tr><td>вул. Вокзальна</td><td class="time">13:09</td><td class="time">15:09</td><td class="time">16:09</td></tr>
+          <tr><td>вул. Липнева</td><td class="time">13:11</td><td class="time">15:11</td><td class="time">16:11</td></tr>
+          <tr><td>вул. Ярослава Мудрого</td><td class="time">13:13</td><td class="time">15:13</td><td class="time">16:13</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:18</td><td class="time">15:18</td><td class="time">16:18</td></tr>
+          <tr><td>вул. Героїв Азову</td><td class="time">13:24</td><td class="time">15:24</td><td class="time">16:24</td></tr>
+          <tr><td>вул. Володимирська</td><td class="time">13:26</td><td class="time">15:26</td><td class="time">16:26</td></tr>
+          <tr><td>вул. Варченкова</td><td class="time">13:28</td><td class="time">15:28</td><td class="time">16:28</td></tr>
+          <tr><td>маг. «Хуторок»</td><td class="time">13:30</td><td class="time">15:30</td><td class="time">16:30</td></tr>
+          <tr><td>вул. Будівельників</td><td class="time">13:31</td><td class="time">15:31</td><td class="time">16:31</td></tr>
+          <tr><td>вул. Довженка</td><td class="time">13:32</td><td class="time">15:32</td><td class="time">16:32</td></tr>
+          <tr><td>х. Переможець</td><td class="time">13:34</td><td class="time">15:34</td><td class="time">16:34</td></tr>
+          <tr><td>Дачі</td><td class="time">13:39</td><td class="time">15:39</td><td class="time">16:39</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:47</td><td class="time">15:47</td><td class="time">16:47</td></tr>
         </tbody>
       </table>
       </div>
     </div>
 
     <div class="card">
-      <h2>🚌 Автобус «МЕРСЕДЕС» <span class="note">— розвезення</span></h2>
+      <h2>🚌 Автобус «МЕРСЕДЕС» <span class="note">— розвезення</span> <span class="pill new">З 21.09.2026</span></h2>
       <p class="lead">Требухівський ліцей → Чорних Запорожців → Крайова → Садова (трансформатор) → Дьогтярина → Садова (дитяча площадка) → ліцей → Бориспільська (Грушка) → пров. Бориспільський → Сонячне сяйво → Сомова → «Жовтень» → ліцей.</p>
-      <p class="note">Розклад діє з 14.09.2026.</p>
+      <p class="note">Новий розклад діє <b>з 21.09.2026</b>. Змінився час 2-го і 3-го рейсів: було 14:00 і 17:00 — стало <b>15:00 і 16:00</b>.</p>
       <div class="scroll">
       <table>
         <thead><tr><th>Зупинка</th><th class="time">Рейс 1</th><th class="time">Рейс 2</th><th class="time">Рейс 3</th></tr></thead>
         <tbody>
-          <tr><td>Требухівський ліцей</td><td class="time">13:00</td><td class="time">14:00</td><td class="time">17:00</td></tr>
-          <tr><td>вул. Чорних Запорожців</td><td class="time">13:05</td><td class="time">14:05</td><td class="time">17:05</td></tr>
-          <tr><td>вул. Крайова – Шевченка (перехрестя)</td><td class="time">13:07</td><td class="time">14:07</td><td class="time">17:07</td></tr>
-          <tr><td>вул. Садова (трансформатор)</td><td class="time">13:10</td><td class="time">14:10</td><td class="time">17:10</td></tr>
-          <tr><td>вул. Садова – Дьогтярина (перехр.)</td><td class="time">13:12</td><td class="time">14:12</td><td class="time">17:12</td></tr>
-          <tr><td>вул. Садова (дитяча площадка)</td><td class="time">13:14</td><td class="time">14:14</td><td class="time">17:14</td></tr>
-          <tr><td>Требухівський ліцей</td><td class="time">13:24</td><td class="time">14:24</td><td class="time">17:24</td></tr>
-          <tr><td>вул. Бориспільська (маг. Грушка)</td><td class="time">13:27</td><td class="time">14:27</td><td class="time">17:27</td></tr>
-          <tr><td>пров. Бориспільський</td><td class="time">13:29</td><td class="time">14:29</td><td class="time">17:29</td></tr>
-          <tr><td>пров. Бориспільський 1 (Сонячне сяйво)</td><td class="time">13:31</td><td class="time">14:31</td><td class="time">17:31</td></tr>
-          <tr><td>вул. Сомова</td><td class="time">13:33</td><td class="time">14:33</td><td class="time">17:33</td></tr>
-          <tr><td>маг. «Жовтень»</td><td class="time">13:35</td><td class="time">14:35</td><td class="time">17:35</td></tr>
-          <tr><td>Требухівський ліцей</td><td class="time">13:42</td><td class="time">14:42</td><td class="time">17:42</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:00</td><td class="time">15:00</td><td class="time">16:00</td></tr>
+          <tr><td>вул. Чорних Запорожців</td><td class="time">13:05</td><td class="time">15:05</td><td class="time">16:05</td></tr>
+          <tr><td>вул. Крайова – Шевченка (перехрестя)</td><td class="time">13:07</td><td class="time">15:07</td><td class="time">16:07</td></tr>
+          <tr><td>вул. Садова (трансформатор)</td><td class="time">13:10</td><td class="time">15:10</td><td class="time">16:10</td></tr>
+          <tr><td>вул. Садова – Дьогтярина (перехр.)</td><td class="time">13:12</td><td class="time">15:12</td><td class="time">16:12</td></tr>
+          <tr><td>вул. Садова (дитяча площадка)</td><td class="time">13:14</td><td class="time">15:14</td><td class="time">16:14</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:24</td><td class="time">15:24</td><td class="time">16:24</td></tr>
+          <tr><td>вул. Бориспільська (маг. Грушка)</td><td class="time">13:27</td><td class="time">15:27</td><td class="time">16:27</td></tr>
+          <tr><td>пров. Бориспільський</td><td class="time">13:29</td><td class="time">15:29</td><td class="time">16:29</td></tr>
+          <tr><td>пров. Бориспільський 1 (Сонячне сяйво)</td><td class="time">13:31</td><td class="time">15:31</td><td class="time">16:31</td></tr>
+          <tr><td>вул. Сомова</td><td class="time">13:33</td><td class="time">15:33</td><td class="time">16:33</td></tr>
+          <tr><td>маг. «Жовтень»</td><td class="time">13:35</td><td class="time">15:35</td><td class="time">16:35</td></tr>
+          <tr><td>Требухівський ліцей</td><td class="time">13:42</td><td class="time">15:42</td><td class="time">16:42</td></tr>
         </tbody>
       </table>
       </div>
@@ -827,9 +883,39 @@
 
   <footer>
     Неофіційний конспект для зручності батьків 6-А, складений за батьківськими зборами (01.09.2026) та наданими розкладами.<br>
-    За офіційною й актуальною інформацією орієнтуйтеся на класного керівника та ліцей. Розклади на перший місяць можуть змінюватися.
+    За офіційною й актуальною інформацією орієнтуйтеся на класного керівника та ліцей. Розклади на перший місяць можуть змінюватися.<br>
+    <button class="btn" id="fb-open">💬 Оцінити сторінку</button>
   </footer>
 
+</div>
+
+<div id="fb" role="dialog" aria-live="polite" aria-label="Оцінка сторінки" hidden>
+  <button class="fb-x" id="fb-close" aria-label="Закрити">&#10005;</button>
+
+  <div id="fb-ask">
+    <h3>Ця сторінка вам корисна?</h3>
+    <p>Одне натискання — і ми знатимемо, чи варто вести її далі.</p>
+    <div class="fb-row">
+      <button class="fb-vote" data-vote="up"><span>👍</span>Користуюсь</button>
+      <button class="fb-vote" data-vote="mid"><span>🙂</span>Іноді</button>
+      <button class="fb-vote" data-vote="down"><span>👎</span>Не зайшло</button>
+    </div>
+  </div>
+
+  <div id="fb-say" hidden>
+    <h3>Дякуємо! 🙏</h3>
+    <p>Хочете щось додати — чого бракує або що виправити? (необов'язково)</p>
+    <textarea id="fb-text" maxlength="500" placeholder="Напишіть кілька слів…" aria-label="Коментар"></textarea>
+    <div class="fb-actions">
+      <button class="btn primary" id="fb-send">Надіслати</button>
+      <button class="btn" id="fb-skip">Пропустити</button>
+    </div>
+  </div>
+
+  <div id="fb-thanks" hidden>
+    <h3><span class="ok">✅</span> Дякуємо за відгук!</h3>
+    <p>Вашу оцінку враховано.</p>
+  </div>
 </div>
 
 <script>
@@ -862,6 +948,108 @@
         lm.querySelectorAll('button').forEach(function(x){ x.classList.toggle('active', x===b); });
         table.classList.toggle('mode-cur', b.dataset.lmode==='cur');
         table.classList.toggle('mode-norm', b.dataset.lmode==='norm');
+      });
+    }
+
+    // ================= ВІДГУК І ЛІЧИЛЬНИК ВІДВІДУВАНЬ =================
+    // Куди йдуть відповіді: Google Форма власника сторінки (безкоштовно, дані — у його таблиці).
+    // Поки FORM.url порожній — оцінки нікуди не летять, лишаються тільки в браузері відвідувача.
+    // Як увімкнути: створити Google Форму з трьома полями (Оцінка / Коментар / Вкладка),
+    // у «Попередньому перегляді» знайти в коді сторінки entry.XXXX кожного поля, підставити нижче,
+    // а url узяти з адреси форми, замінивши /viewform на /formResponse.
+    var FORM = {
+      url: '',                 // напр. 'https://docs.google.com/forms/d/e/FORM_ID/formResponse'
+      rating: 'entry.111111',  // поле «Оцінка» (up / mid / down / visit)
+      comment: 'entry.222222', // поле «Коментар»
+      page: 'entry.333333'     // поле «Вкладка»
+    };
+    var SNOOZE_DAYS = 30, REASK_DAYS = 120, DAY = 864e5;
+
+    function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+    function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+    function activeTab(){ var b = tabs.querySelector('button.active'); return b ? b.textContent.trim() : '—'; }
+
+    function send(rating, comment){
+      if(!FORM.url) return;                       // форма ще не під'єднана — тихо виходимо
+      try{
+        var fd = new FormData();
+        fd.append(FORM.rating, rating);
+        fd.append(FORM.comment, comment || '');
+        fd.append(FORM.page, activeTab());
+        fetch(FORM.url, {method:'POST', mode:'no-cors', body:fd}).catch(function(){});
+      }catch(e){}
+    }
+
+    // 1) лічильник: один пінг на сесію браузера — видно, чи взагалі заходять на сторінку
+    try{
+      if(!sessionStorage.getItem('fb.visit')){
+        sessionStorage.setItem('fb.visit','1');
+        send('visit','');
+      }
+    }catch(e){}
+
+    // 2) картка з оцінкою
+    var fb = document.getElementById('fb');
+    if(fb){
+      var ask = document.getElementById('fb-ask'), say = document.getElementById('fb-say'),
+          thanks = document.getElementById('fb-thanks'), txt = document.getElementById('fb-text');
+      var shown = false, vote = null;
+
+      function eligible(){
+        var voted = parseInt(lsGet('fb.voted') || '0', 10);
+        var snooze = parseInt(lsGet('fb.snooze') || '0', 10);
+        var now = Date.now();
+        if(voted && now - voted < REASK_DAYS*DAY) return false;
+        if(snooze && now < snooze) return false;
+        return true;
+      }
+      function openFb(force){
+        if(shown || (!force && !eligible())) return;
+        shown = true; fb.hidden = false;
+        requestAnimationFrame(function(){ fb.classList.add('show'); });
+      }
+      function closeFb(snooze){
+        fb.classList.remove('show');
+        setTimeout(function(){
+          fb.hidden = true; shown = false;
+          ask.hidden = false; say.hidden = true; thanks.hidden = true; vote = null;
+          if(txt) txt.value = '';
+        }, 280);
+        if(snooze) lsSet('fb.snooze', String(Date.now() + SNOOZE_DAYS*DAY));
+      }
+      function done(){
+        ask.hidden = true; say.hidden = true; thanks.hidden = false;
+        lsSet('fb.voted', String(Date.now()));
+        setTimeout(function(){ closeFb(false); }, 2200);
+      }
+
+      fb.addEventListener('click', function(e){
+        var v = e.target.closest('.fb-vote');
+        if(v){
+          vote = v.dataset.vote;
+          send(vote, '');
+          lsSet('fb.voted', String(Date.now()));
+          ask.hidden = true; say.hidden = false;
+          return;
+        }
+        if(e.target.closest('#fb-close')){ closeFb(true); return; }
+        if(e.target.closest('#fb-skip')){ done(); return; }
+        if(e.target.closest('#fb-send')){
+          var t = (txt && txt.value || '').trim();
+          if(t) send(vote || 'comment', t);
+          done();
+        }
+      });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && shown) closeFb(true); });
+
+      var openBtn = document.getElementById('fb-open');
+      if(openBtn) openBtn.addEventListener('click', function(){ openFb(true); });
+
+      // показуємо ненав'язливо: через 30 с на сторінці або після третього перемикання вкладок
+      setTimeout(function(){ openFb(false); }, 30000);
+      var switches = 0;
+      tabs.addEventListener('click', function(e){
+        if(e.target.closest('button') && ++switches >= 3) openFb(false);
       });
     }
   })();
