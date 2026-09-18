@@ -177,6 +177,15 @@
   #fb .fb-actions .btn{flex:1}
   #fb .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b1020;border-color:transparent}
   #fb-thanks .ok{font-size:1.6rem}
+  /* примусове опитування: перший захід — завіса й вікно по центру, без «✕» */
+  #fb-veil{position:fixed;inset:0;z-index:59;background:rgba(6,9,15,.72);backdrop-filter:blur(3px);
+    opacity:0;pointer-events:none;transition:opacity .28s ease}
+  #fb-veil.show{opacity:1;pointer-events:auto}
+  #fb.forced{bottom:auto;top:50%;transform:translate(-50%,-46%) scale(.98)}
+  #fb.forced.show{transform:translate(-50%,-50%) scale(1)}
+  #fb.forced .fb-x{display:none}
+  #fb.forced h3{padding-right:0}
+  body.fb-lock{overflow:hidden}
   #fb-open{margin-top:10px}
   @media print{#fb,#fb-open{display:none !important}}
 
@@ -889,12 +898,13 @@
 
 </div>
 
+<div id="fb-veil" hidden></div>
 <div id="fb" role="dialog" aria-live="polite" aria-label="Оцінка сторінки" hidden>
   <button class="fb-x" id="fb-close" aria-label="Закрити">&#10005;</button>
 
   <div id="fb-ask">
     <h3>Ця сторінка вам корисна?</h3>
-    <p>Одне натискання — і ми знатимемо, чи варто вести її далі.</p>
+    <p>Одне натискання — і ми знатимемо, чи варто вести її далі. Відповідь анонімна.</p>
     <div class="fb-row">
       <button class="fb-vote" data-vote="up"><span>👍</span>Користуюсь</button>
       <button class="fb-vote" data-vote="mid"><span>🙂</span>Іноді</button>
@@ -904,7 +914,7 @@
 
   <div id="fb-say" hidden>
     <h3>Дякуємо! 🙏</h3>
-    <p>Хочете щось додати — чого бракує або що виправити? (необов'язково)</p>
+    <p>Хочете щось додати — чого бракує або що виправити? Це вже необов'язково.</p>
     <textarea id="fb-text" maxlength="500" placeholder="Напишіть кілька слів…" aria-label="Коментар"></textarea>
     <div class="fb-actions">
       <button class="btn primary" id="fb-send">Надіслати</button>
@@ -963,10 +973,21 @@
       comment: 'entry.222222', // поле «Коментар»
       page: 'entry.333333'     // поле «Вкладка»
     };
-    var SNOOZE_DAYS = 30, REASK_DAYS = 120, DAY = 864e5;
 
-    function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-    function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+    // Логіка показу: ПЕРШИЙ захід — вікно по центру із завісою, без «✕»: щоб піти далі,
+    // треба поставити одну з трьох оцінок (коментар — необов'язковий). Відповідь кешується
+    // в браузері (localStorage), і більше примусово не з'являється НІКОЛИ — лише за кнопкою
+    // «💬 Оцінити сторінку» у футері.
+    var VOTED_KEY = 'fb.voted';
+
+    function lsGet(k){
+      try{ return localStorage.getItem(k) || sessionStorage.getItem(k); }catch(e){ return null; }
+    }
+    function lsSet(k, v){
+      // localStorage може бути недоступний (приватне вікно) — тоді хоча б у межах сесії,
+      // щоб опитування не блокувало людину на кожній сторінці.
+      try{ localStorage.setItem(k, v); }catch(e){ try{ sessionStorage.setItem(k, v); }catch(e2){} }
+    }
     function activeTab(){ var b = tabs.querySelector('button.active'); return b ? b.textContent.trim() : '—'; }
 
     function send(rating, comment){
@@ -990,37 +1011,44 @@
 
     // 2) картка з оцінкою
     var fb = document.getElementById('fb');
+    var veil = document.getElementById('fb-veil');
     if(fb){
       var ask = document.getElementById('fb-ask'), say = document.getElementById('fb-say'),
           thanks = document.getElementById('fb-thanks'), txt = document.getElementById('fb-text');
-      var shown = false, vote = null;
+      var shown = false, forced = false, vote = null;
 
-      function eligible(){
-        var voted = parseInt(lsGet('fb.voted') || '0', 10);
-        var snooze = parseInt(lsGet('fb.snooze') || '0', 10);
-        var now = Date.now();
-        if(voted && now - voted < REASK_DAYS*DAY) return false;
-        if(snooze && now < snooze) return false;
-        return true;
+      // Не покладаємось на requestAnimationFrame: у фоновій вкладці він заморожений,
+      // і вікно лишилося б невидимим при заблокованій сторінці.
+      function paint(fn){ setTimeout(fn, 20); }
+
+      function openFb(isForced){
+        if(shown) return;
+        shown = true; forced = !!isForced;
+        fb.hidden = false;
+        fb.classList.toggle('forced', forced);
+        if(forced){
+          fb.setAttribute('aria-modal','true');
+          document.body.classList.add('fb-lock');
+          if(veil){ veil.hidden = false; paint(function(){ veil.classList.add('show'); }); }
+        }
+        paint(function(){ fb.classList.add('show'); });
       }
-      function openFb(force){
-        if(shown || (!force && !eligible())) return;
-        shown = true; fb.hidden = false;
-        requestAnimationFrame(function(){ fb.classList.add('show'); });
-      }
-      function closeFb(snooze){
+      function closeFb(){
         fb.classList.remove('show');
+        if(veil) veil.classList.remove('show');
+        document.body.classList.remove('fb-lock');
+        fb.removeAttribute('aria-modal');
         setTimeout(function(){
-          fb.hidden = true; shown = false;
-          ask.hidden = false; say.hidden = true; thanks.hidden = true; vote = null;
+          fb.hidden = true; if(veil) veil.hidden = true;
+          fb.classList.remove('forced');
+          shown = false; forced = false; vote = null;
+          ask.hidden = false; say.hidden = true; thanks.hidden = true;
           if(txt) txt.value = '';
         }, 280);
-        if(snooze) lsSet('fb.snooze', String(Date.now() + SNOOZE_DAYS*DAY));
       }
       function done(){
         ask.hidden = true; say.hidden = true; thanks.hidden = false;
-        lsSet('fb.voted', String(Date.now()));
-        setTimeout(function(){ closeFb(false); }, 2200);
+        setTimeout(closeFb, 1800);
       }
 
       fb.addEventListener('click', function(e){
@@ -1028,11 +1056,12 @@
         if(v){
           vote = v.dataset.vote;
           send(vote, '');
-          lsSet('fb.voted', String(Date.now()));
+          lsSet(VOTED_KEY, String(Date.now()));   // кешуємо одразу: більше не питаємо примусово
           ask.hidden = true; say.hidden = false;
+          if(txt) txt.focus();
           return;
         }
-        if(e.target.closest('#fb-close')){ closeFb(true); return; }
+        if(e.target.closest('#fb-close')){ closeFb(); return; }   // «✕» є лише в необов'язковому режимі
         if(e.target.closest('#fb-skip')){ done(); return; }
         if(e.target.closest('#fb-send')){
           var t = (txt && txt.value || '').trim();
@@ -1040,17 +1069,14 @@
           done();
         }
       });
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && shown) closeFb(true); });
+      // Esc закриває тільки тоді, коли опитування необов'язкове
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && shown && !forced) closeFb(); });
 
       var openBtn = document.getElementById('fb-open');
-      if(openBtn) openBtn.addEventListener('click', function(){ openFb(true); });
+      if(openBtn) openBtn.addEventListener('click', function(){ openFb(false); });
 
-      // показуємо ненав'язливо: через 30 с на сторінці або після третього перемикання вкладок
-      setTimeout(function(){ openFb(false); }, 30000);
-      var switches = 0;
-      tabs.addEventListener('click', function(e){
-        if(e.target.closest('button') && ++switches >= 3) openFb(false);
-      });
+      // перший захід — питаємо примусово (даємо сторінці домалюватись)
+      if(!lsGet(VOTED_KEY)) setTimeout(function(){ openFb(true); }, 700);
     }
   })();
 </script>
